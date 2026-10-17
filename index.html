@@ -1,0 +1,2485 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yandel's GYM (CAFYG) | Un Gimnasio de Primera para Gente de Primera en Ixtapaluca</title>
+  <meta name="description" content="Yandel's GYM (CAFYG - Centro de Acondicionamiento Físico y Gimnasio) en Santa Cruz Tlapacoya, Ixtapaluca. Peso libre e integrado, cardio, entrenadores personales, nutricionista, fisioterapeuta, barra de proteína, spa, zona infantil y convenio con Wellhub (Gympass)." />
+
+  <!-- Google Fonts: Bebas Neue (Display Impact), Plus Jakarta Sans (UI Body), JetBrains Mono (Telemetry/Stats) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#090D16',
+            slateDark: '#111827',
+            cardDark: '#0D1322',
+            neonGreen: '#10B981',
+            neonLime: '#84CC16',
+            neonAmber: '#F59E0B',
+          },
+          fontFamily: {
+            display: ['"Bebas Neue"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          boxShadow: {
+            'neon-green': '0 0 25px -3px rgba(16, 185, 129, 0.45), 0 0 10px -2px rgba(132, 204, 22, 0.35)',
+            'neon-lime': '0 0 30px -4px rgba(132, 204, 22, 0.55)',
+            'neon-amber': '0 0 25px -3px rgba(245, 158, 11, 0.45)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg-primary: #090D16;
+      --bg-secondary: #111827;
+      --neon-emerald: #10B981;
+      --neon-lime: #84CC16;
+      --neon-amber: #F59E0B;
+    }
+
+    * {
+      box-sizing: border-box;
+      selection-background-color: #84CC16;
+      selection-color: #090D16;
+    }
+
+    ::selection {
+      background: #84CC16;
+      color: #090D16;
+    }
+
+    body {
+      background-color: #090D16;
+      color: #F9FAFB;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090D16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #10B981, #84CC16);
+      border-radius: 9999px;
+      border: 2px solid #090D16;
+    }
+
+    /* Ambient Cyber Grid Background */
+    .bg-cyber-grid {
+      background-size: 48px 48px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+
+    /* Infinite Marquee Animation */
+    @keyframes marqueeScroll {
+      0% {
+        transform: translate3d(0%, 0, 0);
+      }
+      100% {
+        transform: translate3d(-50%, 0, 0);
+      }
+    }
+
+    @keyframes marqueeScrollReverse {
+      0% {
+        transform: translate3d(-50%, 0, 0);
+      }
+      100% {
+        transform: translate3d(0%, 0, 0);
+      }
+    }
+
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 28s linear infinite;
+    }
+
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+
+    .animate-marquee-reverse {
+      display: flex;
+      width: max-content;
+      animation: marqueeScrollReverse 32s linear infinite;
+    }
+
+    /* ECG Heartbeat Pulse Line Animation (Inspired by Yandel's GYM real neon sign) */
+    @keyframes ecgDash {
+      0% {
+        stroke-dashoffset: 600;
+      }
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .ecg-line {
+      stroke-dasharray: 600;
+      animation: ecgDash 3.5s linear infinite;
+    }
+
+    /* SVG Muscle Node Pulse Keyframes */
+    @keyframes radarPulse {
+      0% {
+        transform: scale(0.95);
+        opacity: 0.9;
+      }
+      50% {
+        transform: scale(1.12);
+        opacity: 0.35;
+      }
+      100% {
+        transform: scale(0.95);
+        opacity: 0.9;
+      }
+    }
+
+    @keyframes ringExpand {
+      0% {
+        r: 8px;
+        opacity: 1;
+      }
+      100% {
+        r: 26px;
+        opacity: 0;
+      }
+    }
+
+    .svg-pulse-ring {
+      animation: ringExpand 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+
+    .muscle-zone {
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      fill: rgba(17, 24, 39, 0.85);
+      stroke: rgba(148, 163, 184, 0.35);
+      stroke-width: 1.8;
+    }
+
+    .muscle-zone:hover,
+    .muscle-zone.active-zone {
+      filter: drop-shadow(0 0 16px var(--zone-color, #10B981));
+      stroke: var(--zone-color, #84CC16);
+      stroke-width: 2.5;
+      fill: var(--zone-fill, rgba(16, 185, 129, 0.38));
+    }
+
+    /* 3D Glow Cards with Spotlight Border */
+    .card-3d-glow {
+      position: relative;
+      background: linear-gradient(145deg, rgba(17, 24, 39, 0.92), rgba(9, 13, 22, 0.96));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transform-style: preserve-3d;
+      transition: transform 0.25s ease-out, border-color 0.35s ease, box-shadow 0.35s ease;
+      overflow: hidden;
+    }
+
+    .card-3d-glow::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.5px;
+      background: radial-gradient(
+        480px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(132, 204, 22, 0.85),
+        rgba(16, 185, 129, 0.45) 35%,
+        rgba(245, 158, 11, 0.2) 60%,
+        transparent 80%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .card-3d-glow::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(16, 185, 129, 0.10),
+        transparent 60%
+      );
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .card-3d-glow:hover::before,
+    .card-3d-glow:hover::after {
+      opacity: 1;
+    }
+
+    .card-3d-glow:hover {
+      box-shadow: 0 22px 45px -15px rgba(16, 185, 129, 0.28), 0 0 25px -5px rgba(132, 204, 22, 0.22);
+    }
+
+    /* Floating WhatsApp Neon Pulse */
+    @keyframes whatsappPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.75), 0 0 25px rgba(132, 204, 22, 0.5);
+      }
+      70% {
+        box-shadow: 0 0 0 22px rgba(16, 185, 129, 0), 0 0 35px rgba(132, 204, 22, 0.7);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0), 0 0 25px rgba(132, 204, 22, 0.5);
+      }
+    }
+
+    .wa-floating-btn {
+      animation: whatsappPulse 2.2s infinite;
+    }
+
+    /* Text Stroke Effect for Hero Background Typography */
+    .text-outline-neon {
+      -webkit-text-stroke: 1.5px rgba(16, 185, 129, 0.25);
+      color: transparent;
+    }
+
+    /* Custom Range Input Styling */
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+      background: #1F2937;
+      height: 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      margin-top: -6px;
+      background: linear-gradient(135deg, #84CC16, #10B981);
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(132, 204, 22, 0.8);
+      border: 2px solid #090D16;
+      transition: transform 0.15s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body class="bg-obsidian text-gray-100 antialiased selection:bg-neonLime selection:text-obsidian">
+
+  <!-- =====================================================================
+       1. NAVBAR FIJA CON GLASSMORPHISM OSCURO + LIVE STATUS
+       ===================================================================== -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-obsidian/80 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-3">
+        
+        <!-- Brand Logo Inspired by Real Facade Sign (Barbell + ECG Pulse + YANDEL'S GYM | CAFYG) -->
+        <a href="#inicio" class="flex items-center gap-3 group shrink-0">
+          <div class="relative w-12 h-12 rounded-xl bg-gradient-to-br from-slateDark to-obsidian border border-neonGreen/40 flex items-center justify-center shadow-neon-green group-hover:border-neonLime transition-all">
+            <!-- Barbell + ECG Heartbeat Vector -->
+            <svg class="w-8 h-8 text-neonLime" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Barbell plates -->
+              <rect x="4" y="20" width="5" height="24" rx="2" fill="#10B981"/>
+              <rect x="11" y="16" width="5" height="32" rx="2" fill="#84CC16"/>
+              <rect x="48" y="16" width="5" height="32" rx="2" fill="#84CC16"/>
+              <rect x="55" y="20" width="5" height="24" rx="2" fill="#10B981"/>
+              <!-- ECG Pulse center bar -->
+              <path d="M16 32H23L26 21L31 44L35 25L38 36L41 32H48" stroke="#F59E0B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-neonLime animate-ping"></span>
+            <span class="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-neonLime"></span>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-display text-2xl sm:text-3xl tracking-wider text-white leading-none">
+                YANDEL'S <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonGreen via-neonLime to-neonAmber">GYM</span>
+              </span>
+              <span class="text-[11px] font-mono font-bold px-2 py-0.5 rounded bg-neonGreen/15 text-neonLime border border-neonGreen/40">
+                CAFYG
+              </span>
+            </div>
+            <p class="text-[10px] sm:text-xs text-gray-400 tracking-widest uppercase font-medium">
+              Santa Cruz Tlapacoya • Ixtapaluca
+            </p>
+          </div>
+        </a>
+
+        <!-- Live Gym Status Pill in Navbar (Desktop & Tablet) -->
+        <a href="#horarios" id="nav-live-status-pill" class="hidden xl:flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slateDark/90 border border-white/10 hover:border-neonGreen/50 transition-all text-xs">
+          <span id="nav-status-dot" class="w-2.5 h-2.5 rounded-full bg-neonGreen animate-pulse"></span>
+          <span id="nav-status-text" class="font-mono font-semibold text-gray-200">
+            🟢 ABIERTO • L-V 5:00 AM - 11:00 PM
+          </span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold text-gray-300">
+          <a href="#transformacion" class="hover:text-neonLime transition-colors flex items-center gap-1.5">
+            <i data-lucide="activity" class="w-4 h-4 text-neonGreen"></i> Mapa Muscular
+          </a>
+          <a href="#instalaciones" class="hover:text-neonLime transition-colors">Instalaciones</a>
+          <a href="#galeria-real" class="hover:text-neonLime transition-colors">Fotos Reales</a>
+          <a href="#calculadora" class="hover:text-neonLime transition-colors flex items-center gap-1.5">
+            <i data-lucide="calculator" class="w-4 h-4 text-neonAmber"></i> Calculadora IMC
+          </a>
+          <a href="#comunidad" class="hover:text-neonLime transition-colors">Reseñas</a>
+          <a href="#horarios" class="hover:text-neonLime transition-colors">Horarios y Mapa</a>
+        </nav>
+
+        <!-- Primary CTA WhatsApp Button -->
+        <div class="flex items-center gap-3">
+          <a
+            href="https://wa.me/525582424449?text=Hola%20Yandel's%20GYM,%20vi%20su%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informes%20sobre%20las%20mensualidades%20y%20promociones"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-obsidian bg-gradient-to-r from-neonGreen via-neonLime to-neonGreen bg-[length:200%_auto] hover:bg-right transition-all duration-300 shadow-neon-green hover:scale-[1.03] active:scale-95"
+          >
+            <i data-lucide="message-circle" class="w-4 h-4 fill-obsidian"></i>
+            <span>Inscribirme por WhatsApp</span>
+          </a>
+
+          <!-- Mobile Hamburger Button -->
+          <button id="mobile-menu-btn" aria-label="Abrir menú" class="lg:hidden p-2.5 rounded-xl bg-slateDark border border-white/10 text-gray-200 hover:text-neonLime">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-obsidian/95 backdrop-blur-2xl border-b border-white/10 px-4 pt-3 pb-6 space-y-3">
+      <div class="flex items-center justify-between px-3 py-2 rounded-lg bg-slateDark/80 border border-white/10 text-xs font-mono">
+        <span id="mobile-status-text" class="text-neonLime font-bold">🟢 GIMNASIO ABIERTO AHORA</span>
+        <span class="text-gray-400">L-V: 5:00 AM - 11:00 PM</span>
+      </div>
+      <div class="grid grid-cols-2 gap-2 pt-1 text-sm font-semibold">
+        <a href="#transformacion" class="mobile-nav-link p-3 rounded-xl bg-slateDark/60 hover:bg-neonGreen/20 border border-white/5 flex items-center gap-2">
+          <i data-lucide="crosshair" class="w-4 h-4 text-neonLime"></i> Selector Muscular
+        </a>
+        <a href="#instalaciones" class="mobile-nav-link p-3 rounded-xl bg-slateDark/60 hover:bg-neonGreen/20 border border-white/5 flex items-center gap-2">
+          <i data-lucide="dumbbell" class="w-4 h-4 text-neonGreen"></i> 6 Áreas y Servicios
+        </a>
+        <a href="#galeria-real" class="mobile-nav-link p-3 rounded-xl bg-slateDark/60 hover:bg-neonGreen/20 border border-white/5 flex items-center gap-2">
+          <i data-lucide="camera" class="w-4 h-4 text-neonAmber"></i> Galería Real
+        </a>
+        <a href="#calculadora" class="mobile-nav-link p-3 rounded-xl bg-slateDark/60 hover:bg-neonGreen/20 border border-white/5 flex items-center gap-2">
+          <i data-lucide="flame" class="w-4 h-4 text-neonLime"></i> Calculadora IMC
+        </a>
+        <a href="#comunidad" class="mobile-nav-link p-3 rounded-xl bg-slateDark/60 hover:bg-neonGreen/20 border border-white/5 flex items-center gap-2">
+          <i data-lucide="star" class="w-4 h-4 text-neonAmber"></i> Reseñas 5.0 ★
+        </a>
+        <a href="#horarios" class="mobile-nav-link p-3 rounded-xl bg-slateDark/60 hover:bg-neonGreen/20 border border-white/5 flex items-center gap-2">
+          <i data-lucide="map-pin" class="w-4 h-4 text-neonGreen"></i> Ubicación y Reloj
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       2. HERO SECTION DE ALTO IMPACTO (ESTILO GYMSHARK / EQUINOX / NIKE)
+       ===================================================================== -->
+  <section id="inicio" class="relative min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-24 flex items-center overflow-hidden bg-cyber-grid">
+    <!-- Background Real Gym Image with Dramatic Dark Gradient Overlay -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="img/mancuernas-neon-pulso.jpg"
+        alt="Interior real de Yandel's GYM con mancuernas y pulso neón en Ixtapaluca"
+        class="w-full h-full object-cover object-center opacity-25 scale-105 filter contrast-125"
+        onerror="this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=85'"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/95 to-obsidian/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-obsidian/80"></div>
+    </div>
+
+    <!-- Ambient Neon Orbs -->
+    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-neonGreen/20 rounded-full blur-[130px] pointer-events-none"></div>
+    <div class="absolute bottom-10 right-0 w-[28rem] h-[28rem] bg-neonLime/15 rounded-full blur-[150px] pointer-events-none"></div>
+
+    <!-- Giant Outlined Watermark Text -->
+    <div class="absolute top-24 left-1/2 -translate-x-1/2 select-none pointer-events-none z-0 hidden lg:block">
+      <span class="font-display text-[15rem] leading-none tracking-widest text-outline-neon opacity-30 whitespace-nowrap">
+        YANDEL'S GYM • CAFYG
+      </span>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Copy (7 cols) -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Official Top Badge -->
+          <div class="inline-flex flex-wrap items-center gap-2 px-4 py-2 rounded-full bg-slateDark/90 border border-neonGreen/40 shadow-neon-green">
+            <span class="text-xs sm:text-sm font-extrabold tracking-wider uppercase text-neonLime">
+              🔥 EL GIMNASIO MÁS COMPLETO DE IXTAPALUCA • ACEPTAMOS WELLHUB
+            </span>
+          </div>
+
+          <!-- Real-Time Live Status Banner in Hero -->
+          <div id="hero-live-status" class="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
+            <span id="hero-status-indicator" class="relative flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neonGreen opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-neonGreen"></span>
+            </span>
+            <span id="hero-status-label" class="font-mono text-xs sm:text-sm font-bold text-white">
+              🟢 GIMNASIO ABIERTO AHORA - ¡Ven a entrenar!
+            </span>
+            <span class="text-gray-500">|</span>
+            <span id="hero-clock-time" class="font-mono text-xs text-neonAmber font-semibold">
+              Cargando hora...
+            </span>
+          </div>
+
+          <!-- Imposing H1 Official Slogan -->
+          <h1 class="font-display text-5xl sm:text-7xl xl:text-8xl tracking-tight leading-[0.94] uppercase text-white">
+            UN GIMNASIO DE <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonGreen via-neonLime to-neonAmber">PRIMERA</span>
+            PARA GENTE DE <span class="underline decoration-neonLime/70 decoration-4 underline-offset-8">PRIMERA</span>
+          </h1>
+
+          <!-- Animated ECG Neon Line inspired by Yandel's GYM wall neon -->
+          <div class="w-full max-w-md py-1">
+            <svg viewBox="0 0 400 36" fill="none" class="w-full h-8 overflow-visible">
+              <path d="M0 18 H110 L125 4 L140 32 L158 2 L175 34 L190 12 L205 18 H400" stroke="rgba(16, 185, 129, 0.2)" stroke-width="2"/>
+              <path class="ecg-line" d="M0 18 H110 L125 4 L140 32 L158 2 L175 34 L190 12 L205 18 H400" stroke="url(#ecgGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="ecgGrad" x1="0" y1="0" x2="400" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#10B981"/>
+                  <stop offset="0.5" stop-color="#84CC16"/>
+                  <stop offset="1" stop-color="#F59E0B"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <!-- Subtitle highlighting official areas -->
+          <p class="text-base sm:text-lg text-gray-300 leading-relaxed max-w-2xl font-normal">
+            En <strong class="text-white font-bold">Yandel’s GYM (CAFYG - Centro de Acondicionamiento Físico y Gimnasio)</strong> transformamos tu físico en <span class="text-neonLime font-semibold">Santa Cruz Tlapacoya, Ixtapaluca</span>. Disfruta de <strong class="text-white">Peso Libre e Integrado</strong>, <strong class="text-white">Zona de Cardio y Workout</strong>, <strong class="text-white">Entrenadores Personales</strong>, <strong class="text-white">Nutricionista</strong>, <strong class="text-white">Fisioterapeuta</strong>, <strong class="text-white">Cafetería y Barra de Proteína</strong>, <strong class="text-white">Spa y Zona Infantil</strong> en un mismo complejo de alto rendimiento.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <a
+              href="https://wa.me/525582424449?text=Hola%20Yandel's%20GYM,%20vi%20su%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informes%20sobre%20las%20mensualidades%20y%20promociones"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl font-extrabold text-base text-obsidian bg-gradient-to-r from-neonGreen via-neonLime to-neonAmber shadow-neon-green hover:shadow-neon-lime hover:scale-[1.02] transition-all duration-300"
+            >
+              <i data-lucide="message-square-Code" class="w-5 h-5 hidden"></i>
+              <svg class="w-6 h-6 fill-obsidian shrink-0" viewBox="0 0 24 24">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+              </svg>
+              <span>WhatsApp Directo: 55 8242 4449</span>
+              <i data-lucide="arrow-up-right" class="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+            </a>
+
+            <a
+              href="#calculadora"
+              class="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl font-bold text-base text-white bg-slateDark/90 hover:bg-slateDark border border-white/15 hover:border-neonLime/60 transition-all duration-300"
+            >
+              <i data-lucide="calculator" class="w-5 h-5 text-neonLime"></i>
+              <span>Calcular mi IMC y Plan</span>
+            </a>
+          </div>
+
+          <!-- Quick Trust Metrics -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-white/10">
+            <div class="p-3 rounded-xl bg-slateDark/60 border border-white/5">
+              <div class="font-display text-3xl text-neonLime leading-none">7 DÍAS</div>
+              <p class="text-xs text-gray-400 mt-1">Abierto Lunes a Domingo</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slateDark/60 border border-white/5">
+              <div class="font-display text-3xl text-neonGreen leading-none">5:00 AM</div>
+              <p class="text-xs text-gray-400 mt-1">Apertura Lunes a Viernes</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slateDark/60 border border-white/5">
+              <div class="font-display text-3xl text-neonAmber leading-none">WELLHUB</div>
+              <p class="text-xs text-gray-400 mt-1">Aceptamos desde Basic+</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slateDark/60 border border-white/5">
+              <div class="font-display text-3xl text-white leading-none">6 ÁREAS</div>
+              <p class="text-xs text-gray-400 mt-1">Servicio 100% Integral</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Visual Showcase Mosaic (Real Yandel's GYM Photos) (5 cols) -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-lg lg:max-w-none">
+            
+            <!-- Main Showcase Card: Real Interior Photo -->
+            <div class="card-3d-glow rounded-3xl p-3 border border-neonGreen/30 shadow-2xl">
+              <div class="relative rounded-2xl overflow-hidden aspect-[4/4.3]">
+                <img
+                  id="hero-main-photo"
+                  src="img/poleas-peso-integrado.jpg"
+                  alt="Área de Peso Libre e Integrado en Yandel's GYM Ixtapaluca"
+                  class="w-full h-full object-cover object-center transition-all duration-700"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-transparent"></div>
+
+                <!-- Top Floating Wellhub Badge -->
+                <div class="absolute top-4 left-4 right-4 flex items-center justify-between gap-2">
+                  <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-obsidian/85 backdrop-blur-md text-neonLime border border-neonLime/40 flex items-center gap-1.5">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Instalaciones Reales en Ixtapaluca
+                  </span>
+                  <span class="px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-neonAmber/90 text-obsidian">
+                    SIN RESERVA PREVIA
+                  </span>
+                </div>
+
+                <!-- Interactive Thumbnail Switcher on Hero Image -->
+                <div class="absolute bottom-4 left-4 right-4 bg-obsidian/90 backdrop-blur-xl p-3 rounded-2xl border border-white/10">
+                  <div class="flex items-center justify-between mb-2">
+                    <div>
+                      <p id="hero-photo-caption" class="text-xs font-bold text-white uppercase tracking-wider">
+                        Zona de Peso Integrado y Mancuernas (hasta 125 LB)
+                      </p>
+                      <p class="text-[11px] text-gray-400">Av. Ferrocarril, Col. Santa Cruz Tlapacoya</p>
+                    </div>
+                    <span class="text-[11px] font-mono text-neonLime">REAL 100%</span>
+                  </div>
+                  <div class="grid grid-cols-5 gap-2">
+                    <button onclick="switchHeroPhoto('img/poleas-peso-integrado.jpg', 'Zona de Peso Integrado y Mancuernas (hasta 125 LB)', this)" class="hero-thumb active ring-2 ring-neonLime rounded-lg overflow-hidden h-12 opacity-100 transition-all">
+                      <img src="img/poleas-peso-integrado.jpg" alt="Poleas" class="w-full h-full object-cover"/>
+                    </button>
+                    <button onclick="switchHeroPhoto('img/mancuernas-neon-pulso.jpg', 'Área de Mancuernas, Bancos y Pulso Neón CAFYG', this)" class="hero-thumb rounded-lg overflow-hidden h-12 opacity-60 hover:opacity-100 transition-all">
+                      <img src="img/mancuernas-neon-pulso.jpg" alt="Mancuernas" class="w-full h-full object-cover"/>
+                    </button>
+                    <button onclick="switchHeroPhoto('img/pierna-prensa-olympic.jpg', 'Prensas Olympic, Tren Inferior y Salón de Zumba / Workout', this)" class="hero-thumb rounded-lg overflow-hidden h-12 opacity-60 hover:opacity-100 transition-all">
+                      <img src="img/pierna-prensa-olympic.jpg" alt="Prensa Olympic" class="w-full h-full object-cover"/>
+                    </button>
+                    <button onclick="switchHeroPhoto('img/racks-mancuernas-pesadas.jpg', 'Racks Completos de Mancuernas Pesadas (75 a 125 LB)', this)" class="hero-thumb rounded-lg overflow-hidden h-12 opacity-60 hover:opacity-100 transition-all">
+                      <img src="img/racks-mancuernas-pesadas.jpg" alt="Racks" class="w-full h-full object-cover"/>
+                    </button>
+                    <button onclick="switchHeroPhoto('img/fachada-yandels-gym.png', 'Edificio de Yandel\'s GYM en Av. Ferrocarril, Santa Cruz Tlapacoya', this)" class="hero-thumb rounded-lg overflow-hidden h-12 opacity-60 hover:opacity-100 transition-all">
+                      <img src="img/fachada-yandels-gym.png" alt="Fachada" class="w-full h-full object-cover"/>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       3. CINTA MARQUEE INFINITA DE ALTA ENERGÍA (INFINITE SCROLLING TICKER)
+       ===================================================================== -->
+  <div class="relative z-20 py-4 bg-gradient-to-r from-neonGreen via-neonLime to-neonAmber text-obsidian border-y-2 border-white/20 shadow-neon-green overflow-hidden -rotate-1 scale-[1.01]">
+    <div class="animate-marquee flex items-center">
+      <!-- Block 1 -->
+      <div class="flex items-center gap-8 px-4 font-display text-2xl sm:text-3xl tracking-wider uppercase whitespace-nowrap">
+        <span>⚡ PESO LIBRE E INTEGRADO</span>
+        <span class="text-obsidian/60">•</span>
+        <span>🥊 WORKOUT &amp; BOX</span>
+        <span class="text-obsidian/60">•</span>
+        <span>🥤 CAFETERÍA Y BARRA DE PROTEÍNA</span>
+        <span class="text-obsidian/60">•</span>
+        <span>🥗 NUTRICIONISTA</span>
+        <span class="text-obsidian/60">•</span>
+        <span>💆‍♂️ FISIOTERAPIA Y SPA</span>
+        <span class="text-obsidian/60">•</span>
+        <span>👶 ZONA INFANTIL</span>
+        <span class="text-obsidian/60">•</span>
+        <span>🤝 AFILIADOS A WELLHUB (GYMPASS)</span>
+        <span class="text-obsidian/60">•</span>
+      </div>
+      <!-- Block 2 (Duplicate for seamless infinite loop) -->
+      <div class="flex items-center gap-8 px-4 font-display text-2xl sm:text-3xl tracking-wider uppercase whitespace-nowrap" aria-hidden="true">
+        <span>⚡ PESO LIBRE E INTEGRADO</span>
+        <span class="text-obsidian/60">•</span>
+        <span>🥊 WORKOUT &amp; BOX</span>
+        <span class="text-obsidian/60">•</span>
+        <span>🥤 CAFETERÍA Y BARRA DE PROTEÍNA</span>
+        <span class="text-obsidian/60">•</span>
+        <span>🥗 NUTRICIONISTA</span>
+        <span class="text-obsidian/60">•</span>
+        <span>💆‍♂️ FISIOTERAPIA Y SPA</span>
+        <span class="text-obsidian/60">•</span>
+        <span>👶 ZONA INFANTIL</span>
+        <span class="text-obsidian/60">•</span>
+        <span>🤝 AFILIADOS A WELLHUB (GYMPASS)</span>
+        <span class="text-obsidian/60">•</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       4. SECCIÓN INTERACTIVA 1: "DISEÑA TU TRANSFORMACIÓN"
+          MAPA MUSCULAR / SELECTOR DE ENTRENAMIENTO INTERACTIVO (SVG + JS)
+       ===================================================================== -->
+  <section id="transformacion" class="relative py-24 lg:py-32 bg-obsidian overflow-hidden">
+    <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-neonGreen/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neonGreen/10 border border-neonGreen/30 text-neonLime text-xs font-mono uppercase tracking-widest mb-4">
+          <i data-lucide="cpu" class="w-4 h-4"></i> INTERACTIVE BIO-SCANNER SVG
+        </div>
+        <h2 class="font-display text-5xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-white">
+          DISEÑA TU <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonGreen via-neonLime to-neonAmber">TRANSFORMACIÓN</span>
+        </h2>
+        <p class="mt-3 text-gray-400 text-base sm:text-lg">
+          Haz clic o pasa el cursor sobre cada zona del cuerpo en nuestro <strong class="text-white">Mapa Muscular Interactivo</strong> para descubrir con qué área, maquinaria y especialista de <strong class="text-neonLime">Yandel's GYM (CAFYG)</strong> vas a lograr tu meta.
+        </p>
+      </div>
+
+      <!-- Quick Zone Selector Pills (Synchronized with SVG) -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
+        <button
+          type="button"
+          data-zone-btn="superior"
+          onclick="selectTrainingZone('superior')"
+          class="zone-pill active-pill flex items-center justify-between p-4 rounded-2xl bg-slateDark border-2 border-neonLime text-left transition-all shadow-neon-green"
+        >
+          <div>
+            <span class="text-[11px] font-mono uppercase text-neonLime block">ZONA 01 • HIPERTROFIA</span>
+            <span class="font-bold text-sm sm:text-base text-white">Tren Superior / Fuerza</span>
+          </div>
+          <i data-lucide="dumbbell" class="w-6 h-6 text-neonLime shrink-0"></i>
+        </button>
+
+        <button
+          type="button"
+          data-zone-btn="inferior"
+          onclick="selectTrainingZone('inferior')"
+          class="zone-pill flex items-center justify-between p-4 rounded-2xl bg-slateDark/70 border border-white/10 hover:border-neonGreen/50 text-left transition-all"
+        >
+          <div>
+            <span class="text-[11px] font-mono uppercase text-gray-400 block">ZONA 02 • EXPLOSIVIDAD</span>
+            <span class="font-bold text-sm sm:text-base text-white">Tren Inferior / Potencia</span>
+          </div>
+          <i data-lucide="zap" class="w-6 h-6 text-neonGreen shrink-0"></i>
+        </button>
+
+        <button
+          type="button"
+          data-zone-btn="cardio"
+          onclick="selectTrainingZone('cardio')"
+          class="zone-pill flex items-center justify-between p-4 rounded-2xl bg-slateDark/70 border border-white/10 hover:border-neonAmber/50 text-left transition-all"
+        >
+          <div>
+            <span class="text-[11px] font-mono uppercase text-gray-400 block">ZONA 03 • METABÓLICO</span>
+            <span class="font-bold text-sm sm:text-base text-white">Cardio &amp; Boxeo / Workout</span>
+          </div>
+          <i data-lucide="flame" class="w-6 h-6 text-neonAmber shrink-0"></i>
+        </button>
+
+        <button
+          type="button"
+          data-zone-btn="recuperacion"
+          onclick="selectTrainingZone('recuperacion')"
+          class="zone-pill flex items-center justify-between p-4 rounded-2xl bg-slateDark/70 border border-white/10 hover:border-emerald-400/50 text-left transition-all"
+        >
+          <div>
+            <span class="text-[11px] font-mono uppercase text-gray-400 block">ZONA 04 • SALUD INTEGRAL</span>
+            <span class="font-bold text-sm sm:text-base text-white">Recuperación &amp; Salud</span>
+          </div>
+          <i data-lucide="heart-pulse" class="w-6 h-6 text-emerald-400 shrink-0"></i>
+        </button>
+      </div>
+
+      <!-- Main Interactive Grid: Left SVG Body Map (5 cols) + Right Dynamic Detail Card (7 cols) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Left Column: Interactive Stylized Anatomical Cyber-Athlete SVG -->
+        <div class="lg:col-span-5 card-3d-glow rounded-3xl p-6 flex flex-col items-center justify-between relative bg-slateDark/90 border border-white/10">
+          <div class="w-full flex items-center justify-between text-xs font-mono text-gray-400 border-b border-white/10 pb-3 mb-2">
+            <span class="flex items-center gap-1.5 text-neonLime">
+              <span class="w-2 h-2 rounded-full bg-neonLime animate-ping"></span>
+              BIO-SCANNER ACTIVO
+            </span>
+            <span id="svg-active-tag">ZONA: TREN SUPERIOR</span>
+          </div>
+
+          <!-- Interactive SVG Human Body / Training Zones -->
+          <div class="relative w-full max-w-[330px] my-auto py-2 flex items-center justify-center">
+            <svg
+              id="cyber-body-svg"
+              viewBox="0 0 320 560"
+              class="w-full h-auto drop-shadow-[0_0_25px_rgba(16,185,129,0.18)]"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <radialGradient id="scannerGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#10B981" stop-opacity="0.22" />
+                  <stop offset="100%" stop-color="#090D16" stop-opacity="0" />
+                </radialGradient>
+                <linearGradient id="neonStroke" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#84CC16" />
+                  <stop offset="100%" stop-color="#10B981" />
+                </linearGradient>
+              </defs>
+
+              <!-- Background Radar Circles & Target Crosshairs -->
+              <circle cx="160" cy="275" r="150" fill="url(#scannerGlow)" />
+              <circle cx="160" cy="275" r="135" stroke="rgba(16,185,129,0.12)" stroke-width="1" stroke-dasharray="6 6" fill="none" />
+              <circle cx="160" cy="275" r="95" stroke="rgba(132,204,22,0.12)" stroke-width="1" fill="none" />
+              <line x1="160" y1="15" x2="160" y2="545" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+              <line x1="20" y1="275" x2="300" y2="275" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+
+              <!-- ============================================================
+                   ZONA 4: RECUPERACIÓN & SALUD (Cabeza, Cuello, Columna/Articulaciones & Bienestar)
+                   ============================================================ -->
+              <g
+                id="svg-zone-recuperacion"
+                class="muscle-zone"
+                style="--zone-color: #34D399; --zone-fill: rgba(52, 211, 153, 0.42);"
+                onmouseenter="selectTrainingZone('recuperacion')"
+                onclick="selectTrainingZone('recuperacion')"
+              >
+                <!-- Head & Neck Helmet Silhouette -->
+                <path d="M160 28 C142 28 134 42 136 62 C137 76 144 88 160 90 C176 88 183 76 184 62 C186 42 178 28 160 28 Z" />
+                <!-- Neck / Trapezius Collar -->
+                <path d="M144 88 L130 105 L190 105 L176 88 Z" />
+                <!-- Joint Recovery Nodes (Knees & Ankles & Shoulders Mobility) -->
+                <circle cx="96" cy="128" r="9" />
+                <circle cx="224" cy="128" r="9" />
+                <circle cx="132" cy="402" r="10" />
+                <circle cx="188" cy="402" r="10" />
+              </g>
+
+              <!-- ============================================================
+                   ZONA 1: TREN SUPERIOR / FUERZA (Pectorales, Deltoides, Bíceps, Tríceps, Dorsales)
+                   ============================================================ -->
+              <g
+                id="svg-zone-superior"
+                class="muscle-zone active-zone"
+                style="--zone-color: #84CC16; --zone-fill: rgba(132, 204, 22, 0.45);"
+                onmouseenter="selectTrainingZone('superior')"
+                onclick="selectTrainingZone('superior')"
+              >
+                <!-- Left Pectoral -->
+                <path d="M158 108 L112 108 L104 148 L130 165 L158 158 Z" />
+                <!-- Right Pectoral -->
+                <path d="M162 108 L208 108 L216 148 L190 165 L162 158 Z" />
+                <!-- Left Deltoid & Bicep/Tricep & Forearm -->
+                <path d="M110 108 C92 112 82 128 80 152 L98 165 L108 142 Z" />
+                <path d="M78 156 L66 208 L88 214 L98 168 Z" />
+                <path d="M64 212 L52 268 L72 274 L86 218 Z" />
+                <!-- Right Deltoid & Bicep/Tricep & Forearm -->
+                <path d="M210 108 C228 112 238 128 240 152 L222 165 L212 142 Z" />
+                <path d="M242 156 L254 208 L232 214 L222 168 Z" />
+                <path d="M256 212 L268 268 L248 274 L234 218 Z" />
+                <!-- Lats (Dorsales V-Taper) -->
+                <path d="M108 154 L120 212 L130 168 Z" />
+                <path d="M212 154 L200 212 L190 168 Z" />
+              </g>
+
+              <!-- ============================================================
+                   ZONA 3: CARDIO & BOXEO / CORE (Abdominales, Oblicuos, Cardio Pulmonar & Guantes/Puños)
+                   ============================================================ -->
+              <g
+                id="svg-zone-cardio"
+                class="muscle-zone"
+                style="--zone-color: #F59E0B; --zone-fill: rgba(245, 158, 11, 0.45);"
+                onmouseenter="selectTrainingZone('cardio')"
+                onclick="selectTrainingZone('cardio')"
+              >
+                <!-- Upper Abs -->
+                <rect x="134" y="164" width="23" height="24" rx="4" />
+                <rect x="163" y="164" width="23" height="24" rx="4" />
+                <!-- Mid Abs -->
+                <rect x="134" y="192" width="23" height="24" rx="4" />
+                <rect x="163" y="192" width="23" height="24" rx="4" />
+                <!-- Lower Abs / Core V -->
+                <path d="M135 220 H157 V254 L140 246 Z" />
+                <path d="M163 220 H185 L180 246 L163 254 Z" />
+                <!-- Left & Right Obliques -->
+                <path d="M120 172 L131 168 L131 242 L118 228 Z" />
+                <path d="M200 172 L189 168 L189 242 L202 228 Z" />
+                <!-- Boxing / Workout Fists -->
+                <circle cx="58" cy="284" r="12" />
+                <circle cx="262" cy="284" r="12" />
+              </g>
+
+              <!-- ============================================================
+                   ZONA 2: TREN INFERIOR / POTENCIA (Cuádriceps, Glúteos/Cadera, Isquios, Pantorrillas)
+                   ============================================================ -->
+              <g
+                id="svg-zone-inferior"
+                class="muscle-zone"
+                style="--zone-color: #10B981; --zone-fill: rgba(16, 185, 129, 0.45);"
+                onmouseenter="selectTrainingZone('inferior')"
+                onclick="selectTrainingZone('inferior')"
+              >
+                <!-- Hip / Pelvis Power Belt -->
+                <path d="M118 248 L158 260 L158 286 L112 274 Z" />
+                <path d="M202 248 L162 260 L162 286 L208 274 Z" />
+                <!-- Left Quad Sweep (Vastus Lateralis & Medialis) -->
+                <path d="M110 278 L154 290 L148 388 L118 388 C104 352 104 314 110 278 Z" />
+                <!-- Right Quad Sweep -->
+                <path d="M210 278 L166 290 L172 388 L202 388 C216 352 216 314 210 278 Z" />
+                <!-- Left Calf (Gastrocnemius) -->
+                <path d="M118 416 L146 416 L142 504 L124 504 C112 474 112 444 118 416 Z" />
+                <!-- Right Calf -->
+                <path d="M202 416 L174 416 L178 504 L196 504 C208 474 208 444 202 416 Z" />
+                <!-- Feet / Athletic Stance Base -->
+                <path d="M120 510 H144 L148 530 H112 Z" />
+                <path d="M176 510 H200 L208 530 H172 Z" />
+              </g>
+
+              <!-- Interactive Pulse Hotspots with Labels -->
+              <!-- Hotspot 1: Tren Superior -->
+              <g class="cursor-pointer" onclick="selectTrainingZone('superior')">
+                <circle cx="192" cy="135" r="8" fill="#84CC16" class="svg-pulse-ring" />
+                <circle cx="192" cy="135" r="6" fill="#84CC16" stroke="#090D16" stroke-width="2" />
+              </g>
+
+              <!-- Hotspot 2: Cardio & Core -->
+              <g class="cursor-pointer" onclick="selectTrainingZone('cardio')">
+                <circle cx="160" cy="205" r="8" fill="#F59E0B" class="svg-pulse-ring" />
+                <circle cx="160" cy="205" r="6" fill="#F59E0B" stroke="#090D16" stroke-width="2" />
+              </g>
+
+              <!-- Hotspot 3: Tren Inferior -->
+              <g class="cursor-pointer" onclick="selectTrainingZone('inferior')">
+                <circle cx="132" cy="335" r="8" fill="#10B981" class="svg-pulse-ring" />
+                <circle cx="132" cy="335" r="6" fill="#10B981" stroke="#090D16" stroke-width="2" />
+              </g>
+
+              <!-- Hotspot 4: Recuperación & Salud -->
+              <g class="cursor-pointer" onclick="selectTrainingZone('recuperacion')">
+                <circle cx="160" cy="58" r="8" fill="#34D399" class="svg-pulse-ring" />
+                <circle cx="160" cy="58" r="6" fill="#34D399" stroke="#090D16" stroke-width="2" />
+              </g>
+            </svg>
+          </div>
+
+          <p class="text-xs text-center text-gray-400 font-mono">
+            💡 Toca cualquier grupo muscular en el modelo o los botones superiores
+          </p>
+        </div>
+
+        <!-- Right Column: Dynamic Transformation Card (7 cols) -->
+        <div class="lg:col-span-7 card-3d-glow rounded-3xl p-6 sm:p-8 lg:p-10 flex flex-col justify-between border border-neonGreen/30 relative overflow-hidden">
+          
+          <!-- Top Area Header & Dynamic Photo Preview -->
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <span id="zone-badge" class="px-3.5 py-1 rounded-full text-xs font-mono font-bold bg-neonLime/15 text-neonLime border border-neonLime/40">
+                ⚡ ÁREA RECOMENDADA EN YANDEL'S GYM
+              </span>
+              <span id="zone-specialist-pill" class="px-3.5 py-1 rounded-full text-xs font-semibold bg-white/5 text-gray-200 border border-white/10">
+                👨‍🏫 Acompañamiento: Entrenador Personal + Barra de Proteína
+              </span>
+            </div>
+
+            <h3 id="zone-title" class="font-display text-4xl sm:text-5xl text-white uppercase tracking-wide">
+              TREN SUPERIOR &amp; HIPERTROFIA DE FUERZA
+            </h3>
+
+            <p id="zone-AreaName" class="text-neonLime font-bold text-base sm:text-lg mt-1">
+              Lo lograrás en: Zona de Peso Libre, Peso Integrado y Racks de Mancuernas
+            </p>
+
+            <p id="zone-description" class="text-gray-300 text-sm sm:text-base leading-relaxed mt-3">
+              Desarrolla pecho, espalda en V, hombros y brazos con nuestra amplia variedad de máquinas biomecánicas Cybex, torres de poleas cruzadas, barras olímpicas y racks de mancuernas de hasta 125 lbs. Nuestros Entrenadores Personales te guían en tu técnica para lograr máxima hipertrofia sin lesiones.
+            </p>
+
+            <!-- Visual Banner Inside Card -->
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 mt-6 items-center bg-obsidian/80 p-4 rounded-2xl border border-white/10">
+              <div class="sm:col-span-5 rounded-xl overflow-hidden h-40 relative">
+                <img
+                  id="zone-image"
+                  src="img/racks-mancuernas-pesadas.jpg"
+                  alt="Zona de entrenamiento en Yandel's GYM"
+                  class="w-full h-full object-cover transition-all duration-500"
+                />
+                <div class="absolute bottom-2 left-2 px-2.5 py-1 rounded bg-obsidian/85 text-[10px] font-mono text-neonLime border border-neonLime/30">
+                  EQUIPO REAL CAFYG
+                </div>
+              </div>
+              <div class="sm:col-span-7 space-y-3">
+                <div class="text-xs font-mono uppercase text-gray-400">EQUIPAMIENTO Y SERVICIOS INCLUIDOS:</div>
+                <ul id="zone-equipment-list" class="space-y-2 text-sm text-gray-200 font-medium">
+                  <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-neonLime"></span> Racks de mancuernas completas (hasta 125 lbs)</li>
+                  <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-neonLime"></span> Torres de poleas y máquinas biomecánicas integradas</li>
+                  <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-neonLime"></span> Asesoría de Entrenador Personal en piso</li>
+                  <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-neonLime"></span> Malteada post-entreno en nuestra Barra de Proteína</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Telemetry Bars -->
+            <div class="grid grid-cols-3 gap-4 mt-6">
+              <div class="bg-obsidian/60 p-3.5 rounded-xl border border-white/5">
+                <div class="flex justify-between text-xs font-mono mb-1.5">
+                  <span class="text-gray-400">FUERZA</span>
+                  <span id="stat-fuerza-val" class="text-neonLime font-bold">98%</span>
+                </div>
+                <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                  <div id="stat-fuerza-bar" class="h-full bg-gradient-to-r from-neonGreen to-neonLime transition-all duration-500" style="width: 98%"></div>
+                </div>
+              </div>
+              <div class="bg-obsidian/60 p-3.5 rounded-xl border border-white/5">
+                <div class="flex justify-between text-xs font-mono mb-1.5">
+                  <span class="text-gray-400">QUEMA CALÓRICA</span>
+                  <span id="stat-cardio-val" class="text-neonAmber font-bold">85%</span>
+                </div>
+                <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                  <div id="stat-cardio-bar" class="h-full bg-gradient-to-r from-neonLime to-neonAmber transition-all duration-500" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="bg-obsidian/60 p-3.5 rounded-xl border border-white/5">
+                <div class="flex justify-between text-xs font-mono mb-1.5">
+                  <span class="text-gray-400">SALUD Y RECUPERACIÓN</span>
+                  <span id="stat-salud-val" class="text-emerald-400 font-bold">92%</span>
+                </div>
+                <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                  <div id="stat-salud-bar" class="h-full bg-emerald-400 transition-all duration-500" style="width: 92%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic CTA Button for Selected Zone -->
+          <div class="mt-8 pt-5 border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+            <div class="text-xs text-gray-400">
+              <span class="text-white font-semibold block">¿Listo para trabajar esta zona hoy mismo?</span>
+              Inscripciones directas en recepción o mediante convenio <strong class="text-neonLime">Wellhub (Basic+)</strong>.
+            </div>
+            <a
+              id="zone-whatsapp-link"
+              href="https://wa.me/525582424449?text=Hola%20Yandel's%20GYM,%20me%20interesa%20entrenar%20Tren%20Superior%20y%20Fuerza%20en%20su%20Zona%20de%20Peso%20Libre%20e%20Integrado.%20%C2%BFMe%20dan%20informes%20de%20mensualidades?"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl font-extrabold text-sm text-obsidian bg-gradient-to-r from-neonGreen via-neonLime to-neonAmber shadow-neon-green hover:scale-[1.02] transition-all shrink-0"
+            >
+              <i data-lucide="send" class="w-4 h-4"></i>
+              <span id="zone-whatsapp-btn-text">Pedir Informes de Tren Superior por WhatsApp</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       5. BENTO GRID DE INSTALACIONES Y 6 SERVICIOS EXCLUSIVOS (3D GLOW CARDS)
+       ===================================================================== -->
+  <section id="instalaciones" class="relative py-24 lg:py-32 bg-slateDark/50 border-y border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Header -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neonAmber/15 border border-neonAmber/40 text-neonAmber text-xs font-mono uppercase tracking-widest mb-4">
+            <i data-lucide="sparkles" class="w-4 h-4"></i> ECOSISTEMA FITNESS INTEGRAL EN IXTAPALUCA
+          </div>
+          <h2 class="font-display text-5xl sm:text-6xl lg:text-7xl uppercase text-white tracking-tight leading-none">
+            MÁS QUE UN GIMNASIO, UN <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonGreen via-neonLime to-neonAmber">CENTRO DE ALTO RENDIMIENTO</span>
+          </h2>
+        </div>
+        <p class="text-gray-400 max-w-md text-sm sm:text-base">
+          Pasa el cursor sobre cada tarjeta para explorar las <strong class="text-white">6 áreas oficiales de Yandel's GYM (CAFYG)</strong> diseñadas para cubrir entrenamiento, nutrición, rehabilitación y familia.
+        </p>
+      </div>
+
+      <!-- Bento Grid of 6 Real Services + Wellhub -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
+        
+        <!-- Service 1: Zona de Peso Libre y Peso Integrado (Large 7 cols) -->
+        <article class="lg:col-span-7 card-3d-glow tilt-card rounded-3xl overflow-hidden flex flex-col justify-between group min-h-[380px]">
+          <div class="relative h-60 overflow-hidden">
+            <img
+              src="img/poleas-peso-integrado.jpg"
+              alt="Zona de Peso Libre y Peso Integrado en Yandel's GYM"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent"></div>
+            <div class="absolute top-4 left-4 flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-neonGreen text-obsidian">
+                01 • FUERZA E HIPERTROFIA
+              </span>
+              <span class="px-3 py-1 rounded-full text-xs font-mono bg-obsidian/80 text-neonLime border border-neonLime/40">
+                FOTO REAL DEL GYM
+              </span>
+            </div>
+          </div>
+          <div class="p-6 sm:p-8 pt-4 flex-1 flex flex-col justify-between relative z-10">
+            <div>
+              <h3 class="font-display text-3xl sm:text-4xl text-white uppercase tracking-wide group-hover:text-neonLime transition-colors">
+                1. Zona de Peso Libre y Peso Integrado
+              </h3>
+              <p class="text-gray-300 text-sm sm:text-base mt-2 leading-relaxed">
+                Amplia variedad de máquinas biomecánicas, prensas Olympic, aparatos Cybex, racks, barras olímpicas y mancuernas de hasta 125 lbs para hipertrofia y fuerza.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-neonLime">
+              <span>✓ MÁQUINAS BIOMECÁNICAS • ✓ MANCUERNAS PESADAS</span>
+              <a href="https://wa.me/525582424449?text=Hola%20Yandel's%20GYM,%20quiero%20informes%20para%20entrenar%20en%20su%20Zona%20de%20Peso%20Libre%20e%20Integrado" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">Consultar →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Service 2: Zona de Cardio y Workout (5 cols) -->
+        <article class="lg:col-span-5 card-3d-glow tilt-card rounded-3xl overflow-hidden flex flex-col justify-between group min-h-[380px]">
+          <div class="relative h-60 overflow-hidden">
+            <img
+              src="img/pierna-prensa-olympic.jpg"
+              alt="Zona de Cardio, Workout y Zumba en Yandel's GYM"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-neonLime text-obsidian">
+                02 • RESISTENCIA &amp; QUEMA DE GRASA
+              </span>
+            </div>
+          </div>
+          <div class="p-6 sm:p-8 pt-4 flex-1 flex flex-col justify-between relative z-10">
+            <div>
+              <h3 class="font-display text-3xl sm:text-4xl text-white uppercase tracking-wide group-hover:text-neonLime transition-colors">
+                2. Zona de Cardio y Workout
+              </h3>
+              <p class="text-gray-300 text-sm sm:text-base mt-2 leading-relaxed">
+                Caminadoras, elípticas, escaladoras y área funcional de workout y acondicionamiento para quema de grasa, boxeo recreativo y máxima resistencia cardiovascular.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-neonLime">
+              <span>✓ CARDIO INTENSIVO • ✓ ÁREA FUNCIONAL</span>
+              <a href="https://wa.me/525582424449?text=Hola%20Yandel's%20GYM,%20me%20interesa%20la%20Zona%20de%20Cardio%20y%20Workout" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">Consultar →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Service 3: Entrenadores Personales (4 cols) -->
+        <article class="lg:col-span-4 card-3d-glow tilt-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+          <div class="relative h-52 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=900&q=80"
+              alt="Entrenadores Personales en Yandel's GYM"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-neonAmber text-obsidian">
+                03 • GUÍA PROFESIONAL
+              </span>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between relative z-10">
+            <div>
+              <h3 class="font-display text-3xl text-white uppercase tracking-wide group-hover:text-neonAmber transition-colors">
+                3. Entrenadores Personales
+              </h3>
+              <p class="text-gray-300 text-sm mt-2 leading-relaxed">
+                Instructores capacitados dispuestos a guiarte paso a paso en la ejecución biomecánica y programación de rutinas para alcanzar tus objetivos sin lesiones.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-white/10 text-xs font-mono text-neonAmber">
+              ✓ RUTINAS PERSONALIZADAS • ✓ CORRECCIÓN POSTURAL
+            </div>
+          </div>
+        </article>
+
+        <!-- Service 4: Nutricionista y Fisioterapeuta (4 cols) -->
+        <article class="lg:col-span-4 card-3d-glow tilt-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+          <div class="relative h-52 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80"
+              alt="Nutricionista y Fisioterapeuta en Yandel's GYM"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-400 text-obsidian">
+                04 • SALUD CLÍNICA DEPORTIVA
+              </span>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between relative z-10">
+            <div>
+              <h3 class="font-display text-3xl text-white uppercase tracking-wide group-hover:text-emerald-400 transition-colors">
+                4. Nutricionista y Fisioterapeuta
+              </h3>
+              <p class="text-gray-300 text-sm mt-2 leading-relaxed">
+                Atención integral en el mismo lugar para combinar tu entrenamiento con planes de alimentación a medida y descarga muscular o rehabilitación física.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-white/10 text-xs font-mono text-emerald-400">
+              ✓ PLAN NUTRICIONAL • ✓ DESCARGA Y REHABILITACIÓN
+            </div>
+          </div>
+        </article>
+
+        <!-- Service 5: Cafetería y Barra de Proteína (4 cols) -->
+        <article class="lg:col-span-4 card-3d-glow tilt-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+          <div class="relative h-52 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?auto=format&fit=crop&w=900&q=80"
+              alt="Cafetería y Barra de Proteína Yandel's GYM"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-neonLime text-obsidian">
+                05 • RECUPERACIÓN POST-WORKOUT
+              </span>
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between relative z-10">
+            <div>
+              <h3 class="font-display text-3xl text-white uppercase tracking-wide group-hover:text-neonLime transition-colors">
+                5. Cafetería y Barra de Proteína
+              </h3>
+              <p class="text-gray-300 text-sm mt-2 leading-relaxed">
+                Malteadas proteicas deliciosas, pre-entrenos, suplementación, café e hidratación para recuperar tus ganancias musculares al terminar tu rutina.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-white/10 text-xs font-mono text-neonLime">
+              ✓ SHAKES PROTEICOS • ✓ SUPLEMENTOS E HIDRATACIÓN
+            </div>
+          </div>
+        </article>
+
+        <!-- Service 6: Spa y Zona Infantil (7 cols) -->
+        <article class="lg:col-span-7 card-3d-glow tilt-card rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 justify-between group">
+          <div class="space-y-3 flex-1">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-mono font-bold bg-neonGreen/20 text-neonLime border border-neonGreen/40">
+              06 • COMODIDAD FAMILIAR Y BIENESTAR
+            </span>
+            <h3 class="font-display text-3xl sm:text-4xl text-white uppercase tracking-wide">
+              6. Spa y Zona Infantil Segura
+            </h3>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+              Comodidad total para que entrenes con absoluta tranquilidad mientras tus hijos están en un <strong class="text-white">espacio infantil seguro</strong>, y al finalizar te relajes en nuestra área de <strong class="text-neonLime">Spa</strong> después del esfuerzo.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="px-3 py-1 rounded-lg bg-white/5 text-xs font-mono text-gray-200 border border-white/10">👶 Área Infantil</span>
+              <span class="px-3 py-1 rounded-lg bg-white/5 text-xs font-mono text-gray-200 border border-white/10">💆‍♂️ Spa &amp; Relax</span>
+              <span class="px-3 py-1 rounded-lg bg-white/5 text-xs font-mono text-gray-200 border border-white/10">🚿 Instalaciones Limpias y Amplias</span>
+            </div>
+          </div>
+          <div class="w-full sm:w-56 h-48 rounded-2xl overflow-hidden shrink-0 border border-white/10">
+            <img
+              src="img/mancuernas-neon-pulso.jpg"
+              alt="Ambiente e instalaciones de Yandel's GYM"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+        </article>
+
+        <!-- Official Wellhub (Gympass) Partner Card (5 cols) -->
+        <article class="lg:col-span-5 card-3d-glow tilt-card rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-neonGreen/20 via-slateDark to-obsidian border border-neonLime/40 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-extrabold bg-neonLime text-obsidian uppercase">
+                🤝 CONVENIO OFICIAL ACTIVO
+              </span>
+              <span class="text-xs font-mono text-neonAmber font-bold">DESDE PLAN BASIC+</span>
+            </div>
+            <h3 class="font-display text-3xl sm:text-4xl text-white uppercase tracking-wide">
+              AFILIADOS A WELLHUB <span class="text-neonLime">(ANTES GYMPASS)</span>
+            </h3>
+            <p class="text-gray-300 text-sm sm:text-base mt-2 leading-relaxed">
+              ¿Tienes prestación corporativa de <strong class="text-white">Wellhub / Gympass</strong>? Haz check-in directo en recepción desde el plan <strong class="text-neonLime">Basic+</strong> o adquiere tu membresía mensual directa <strong class="text-white">sin necesidad de reservar horario para entrenar</strong>.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between gap-4">
+            <span class="text-xs font-mono text-gray-300">Acceso inmediato sin cita previa</span>
+            <a
+              href="https://wa.me/525582424449?text=Hola%20Yandel's%20GYM,%20quiero%20pedir%20informes%20sobre%20las%20mensualidades%20directas%20y%20el%20acceso%20con%20Wellhub%20(Gympass)"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-4 py-2.5 rounded-xl bg-neonLime text-obsidian font-extrabold text-xs uppercase tracking-wider hover:bg-white transition-colors shrink-0"
+            >
+              Validar mi Acceso →
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       GALERÍA DE FOTOS REALES DE YANDEL'S GYM (CON LIGHTBOX INTERACTIVO)
+       ===================================================================== -->
+  <section id="galeria-real" class="py-20 bg-obsidian">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-neonLime block mb-2">
+            📸 CONOCE NUESTRO EDIFICIO Y MAQUINARIA REAL
+          </span>
+          <h2 class="font-display text-4xl sm:text-5xl text-white uppercase">
+            GALERÍA REAL DE <span class="text-neonGreen">YANDEL'S GYM (CAFYG)</span>
+          </h2>
+        </div>
+        <p class="text-xs sm:text-sm text-gray-400 font-mono">
+          Haz clic en cualquier fotografía para ampliarla en pantalla completa
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <!-- Photo 1 -->
+        <div onclick="openLightbox('img/fachada-yandels-gym.png', 'Edificio de Yandel\'s GYM (CAFYG) en Av. Ferrocarril y Calle Álvaro Obregón, Santa Cruz Tlapacoya')" class="card-3d-glow rounded-2xl overflow-hidden cursor-pointer group aspect-[4/5] relative">
+          <img src="img/fachada-yandels-gym.png" alt="Fachada Yandel's GYM" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-3 left-3 right-3">
+            <span class="text-[10px] font-mono text-neonLime uppercase block">AV. FERROCARRIL</span>
+            <p class="text-xs font-bold text-white">Edificio de 4 Niveles Yandel's GYM</p>
+          </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div onclick="openLightbox('img/mancuernas-neon-pulso.jpg', 'Zona de Mancuernas, Aparatos Cybex y Pulso Neón Característico')" class="card-3d-glow rounded-2xl overflow-hidden cursor-pointer group aspect-[4/5] relative">
+          <img src="img/mancuernas-neon-pulso.jpg" alt="Mancuernas y Pulso Neón" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-3 left-3 right-3">
+            <span class="text-[10px] font-mono text-neonLime uppercase block">AMBIENTE MOTIVADOR</span>
+            <p class="text-xs font-bold text-white">Mancuernas, Bancos y Pulso Neón</p>
+          </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div onclick="openLightbox('img/poleas-peso-integrado.jpg', 'Estación de Poleas Cruzadas y Peso Integrado')" class="card-3d-glow rounded-2xl overflow-hidden cursor-pointer group aspect-[4/5] relative">
+          <img src="img/poleas-peso-integrado.jpg" alt="Poleas y Peso Integrado" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-3 left-3 right-3">
+            <span class="text-[10px] font-mono text-neonLime uppercase block">PESO INTEGRADO</span>
+            <p class="text-xs font-bold text-white">Torres de Poleas y Peso Libre</p>
+          </div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div onclick="openLightbox('img/pierna-prensa-olympic.jpg', 'Zona de Tren Inferior, Prensa Olympic y Área de Zumba / Workout')" class="card-3d-glow rounded-2xl overflow-hidden cursor-pointer group aspect-[4/5] relative">
+          <img src="img/pierna-prensa-olympic.jpg" alt="Prensa de Pierna Olympic" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-3 left-3 right-3">
+            <span class="text-[10px] font-mono text-neonLime uppercase block">POTENCIA DE PIERNA</span>
+            <p class="text-xs font-bold text-white">Prensas Olympic y Salón Fitness</p>
+          </div>
+        </div>
+
+        <!-- Photo 5 -->
+        <div onclick="openLightbox('img/racks-mancuernas-pesadas.jpg', 'Racks de Mancuernas Pesadas de 75 a 125 lbs para Fuerza e Hipertrofia')" class="card-3d-glow rounded-2xl overflow-hidden cursor-pointer group aspect-[4/5] relative">
+          <img src="img/racks-mancuernas-pesadas.jpg" alt="Racks de Mancuernas Pesadas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-3 left-3 right-3">
+            <span class="text-[10px] font-mono text-neonLime uppercase block">ALTO RENDIMIENTO</span>
+            <p class="text-xs font-bold text-white">Mancuernas hasta 125 Libras</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       6. SECCIÓN INTERACTIVA 2: CALCULADORA INTERACTIVA EN VIVO DE IMC
+          Y CALORÍAS DIARIAS (FITNESS CALCULATOR 100% FUNCIONAL)
+       ===================================================================== -->
+  <section id="calculadora" class="relative py-24 lg:py-32 bg-obsidian overflow-hidden border-t border-white/10">
+    <div class="absolute top-1/2 left-0 w-96 h-96 bg-neonLime/10 rounded-full blur-[150px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neonLime/15 border border-neonLime/40 text-neonLime text-xs font-mono uppercase tracking-widest mb-4">
+          <i data-lucide="Flame" class="w-4 h-4"></i> HERRAMIENTA BIOMÉTRICA EN TIEMPO REAL
+        </div>
+        <h2 class="font-display text-5xl sm:text-6xl lg:text-7xl uppercase text-white tracking-tight">
+          CALCULADORA DE <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonGreen via-neonLime to-neonAmber">IMC Y PLAN CALÓRICO</span> EN VIVO
+        </h2>
+        <p class="mt-3 text-gray-400 text-base sm:text-lg">
+          Ingresa tu peso, altura y objetivo para obtener tu <strong class="text-white">Índice de Masa Corporal (IMC)</strong>, tus calorías diarias recomendadas y agendar tu valoración con el <strong class="text-neonLime">Nutricionista y Entrenador Personal de Yandel's GYM</strong>.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Left Form Panel (6 cols) -->
+        <div class="lg:col-span-6 card-3d-glow rounded-3xl p-6 sm:p-8 lg:p-10 border border-white/10 flex flex-col justify-between">
+          <form id="fitness-calc-form" onsubmit="event.preventDefault(); calculateFitnessPlan();" class="space-y-6">
+            
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+              <div>
+                <h3 class="font-display text-3xl text-white uppercase tracking-wide">1. Tus Datos Físicos</h3>
+                <p class="text-xs text-gray-400">Ajusta con las barras o escribe directamente el valor exacto</p>
+              </div>
+              <span class="font-mono text-xs px-3 py-1 rounded-full bg-neonGreen/15 text-neonLime border border-neonGreen/30">
+                CAFYG LAB
+              </span>
+            </div>
+
+            <!-- Weight Input (kg) -->
+            <div class="bg-obsidian/70 p-4 rounded-2xl border border-white/10 space-y-2">
+              <div class="flex items-center justify-between">
+                <label for="calc-weight" class="text-sm font-bold text-gray-200 flex items-center gap-2">
+                  <i data-lucide="scale" class="w-4 h-4 text-neonLime"></i> Peso Actual (kg)
+                </label>
+                <div class="flex items-center gap-1">
+                  <input
+                    type="number"
+                    id="calc-weight"
+                    min="35"
+                    max="220"
+                    step="0.5"
+                    value="74"
+                    oninput="syncSlider('calc-weight', 'calc-weight-range')"
+                    class="w-20 text-right font-mono text-xl font-extrabold text-neonLime bg-slateDark px-2.5 py-1 rounded-lg border border-neonLime/40 focus:outline-none focus:ring-2 focus:ring-neonLime"
+                    required
+                  />
+                  <span class="font-mono text-xs text-gray-400">KG</span>
+                </div>
+              </div>
+              <input
+                type="range"
+                id="calc-weight-range"
+                min="35"
+                max="180"
+                step="0.5"
+                value="74"
+                oninput="syncSlider('calc-weight-range', 'calc-weight')"
+                class="w-full"
+              />
+            </div>
+
+            <!-- Height Input (cm) -->
+            <div class="bg-obsidian/70 p-4 rounded-2xl border border-white/10 space-y-2">
+              <div class="flex items-center justify-between">
+                <label for="calc-height" class="text-sm font-bold text-gray-200 flex items-center gap-2">
+                  <i data-lucide="ruler" class="w-4 h-4 text-neonGreen"></i> Altura (cm)
+                </label>
+                <div class="flex items-center gap-1">
+                  <input
+                    type="number"
+                    id="calc-height"
+                    min="120"
+                    max="230"
+                    step="1"
+                    value="172"
+                    oninput="syncSlider('calc-height', 'calc-height-range')"
+                    class="w-20 text-right font-mono text-xl font-extrabold text-neonGreen bg-slateDark px-2.5 py-1 rounded-lg border border-neonGreen/40 focus:outline-none focus:ring-2 focus:ring-neonGreen"
+                    required
+                  />
+                  <span class="font-mono text-xs text-gray-400">CM</span>
+                </div>
+              </div>
+              <input
+                type="range"
+                id="calc-height-range"
+                min="135"
+                max="215"
+                step="1"
+                value="172"
+                oninput="syncSlider('calc-height-range', 'calc-height')"
+                class="w-full"
+              />
+            </div>
+
+            <!-- Age & Training Days Row -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-obsidian/70 p-4 rounded-2xl border border-white/10">
+                <label for="calc-age" class="text-xs font-bold text-gray-400 uppercase block mb-1">Edad (Años)</label>
+                <input
+                  type="number"
+                  id="calc-age"
+                  min="12"
+                  max="90"
+                  value="28"
+                  class="w-full font-mono text-lg font-bold text-white bg-slateDark px-3 py-2 rounded-xl border border-white/10 focus:outline-none focus:border-neonLime"
+                />
+              </div>
+              <div class="bg-obsidian/70 p-4 rounded-2xl border border-white/10">
+                <label for="calc-activity" class="text-xs font-bold text-gray-400 uppercase block mb-1">Días de Entreno / Sem</label>
+                <select
+                  id="calc-activity"
+                  class="w-full font-sans text-sm font-bold text-white bg-slateDark px-3 py-2.5 rounded-xl border border-white/10 focus:outline-none focus:border-neonLime"
+                >
+                  <option value="1.375">3 días / semana (Ligero)</option>
+                  <option value="1.55" selected>4-5 días / semana (Intenso)</option>
+                  <option value="1.725">6-7 días / semana (Atleta CAFYG)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Goal Selector (3 Required Official Options) -->
+            <div class="space-y-2">
+              <label for="calc-goal" class="text-sm font-bold text-gray-200 block">
+                Selecciona tu Objetivo Principal:
+              </label>
+              <select
+                id="calc-goal"
+                class="w-full font-sans text-base font-bold text-white bg-obsidian px-4 py-3.5 rounded-2xl border-2 border-neonGreen/50 focus:outline-none focus:border-neonLime transition-colors"
+              >
+                <option value="Bajar porcentaje de grasa">🔥 Bajar porcentaje de grasa (Definición y Cardio)</option>
+                <option value="Aumentar masa muscular" selected>💪 Aumentar masa muscular (Hipertrofia y Volumen)</option>
+                <option value="Mejorar condición y fuerza">⚡ Mejorar condición y fuerza (Rendimiento Integral)</option>
+              </select>
+            </div>
+
+            <!-- Calculate Submit Button -->
+            <button
+              type="submit"
+              class="w-full py-4 px-6 rounded-2xl font-display text-2xl tracking-wider uppercase text-obsidian bg-gradient-to-r from-neonGreen via-neonLime to-neonAmber shadow-neon-green hover:shadow-neon-lime hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-3"
+            >
+              <i data-lucide="sparkles" class="w-6 h-6"></i>
+              <span>Calcular mi Plan</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Right Results & Animated Progress Panel (6 cols) -->
+        <div class="lg:col-span-6 card-3d-glow rounded-3xl p-6 sm:p-8 lg:p-10 border border-neonLime/30 flex flex-col justify-between bg-gradient-to-b from-slateDark/95 to-obsidian">
+          
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-4 mb-6">
+              <div>
+                <span class="text-xs font-mono text-neonLime uppercase tracking-widest block">DIAGNÓSTICO PERSONALIZADO</span>
+                <h3 class="font-display text-3xl text-white uppercase">RESULTADO BIOMÉTRICO EN VIVO</h3>
+              </div>
+              <span id="bmi-category-badge" class="px-3.5 py-1.5 rounded-full text-xs font-mono font-extrabold bg-neonGreen/20 text-neonLime border border-neonLime/50">
+                PESO ÓPTIMO ATLÉTICO
+              </span>
+            </div>
+
+            <!-- Top KPI Cards: IMC & Daily Calories -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+              <div class="p-5 rounded-2xl bg-obsidian/90 border border-white/10">
+                <span class="text-xs font-mono text-gray-400 uppercase block">TU ÍNDICE DE MASA CORPORAL (IMC)</span>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <span id="result-bmi-number" class="font-mono text-4xl sm:text-5xl font-extrabold text-neonLime">25.0</span>
+                  <span class="text-xs font-mono text-gray-400">kg/m²</span>
+                </div>
+                <p id="result-bmi-subtext" class="text-xs text-gray-300 mt-1">Rango saludable con potencial de recomposición.</p>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-obsidian/90 border border-white/10">
+                <span class="text-xs font-mono text-gray-400 uppercase block">META CALÓRICA DIARIA ESTIMADA</span>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <span id="result-calories-number" class="font-mono text-4xl sm:text-5xl font-extrabold text-neonAmber">2,940</span>
+                  <span class="text-xs font-mono text-gray-400">kcal / día</span>
+                </div>
+                <p id="result-goal-tag" class="text-xs text-neonLime font-semibold mt-1">Objetivo: Aumentar masa muscular</p>
+              </div>
+            </div>
+
+            <!-- Animated Progress Bar Gauge for BMI -->
+            <div class="bg-obsidian/80 p-5 rounded-2xl border border-white/10 mb-6">
+              <div class="flex justify-between text-xs font-mono text-gray-400 mb-2">
+                <span>BAJO (&lt;18.5)</span>
+                <span class="text-neonLime">ÓPTIMO (18.5 - 24.9)</span>
+                <span class="text-neonAmber">SOBREPESO (25 - 29.9)</span>
+                <span class="text-rose-400">ALTO (30+)</span>
+              </div>
+              <div class="w-full h-4 bg-gray-800 rounded-full overflow-hidden p-0.5 border border-white/10 relative">
+                <div
+                  id="bmi-progress-bar"
+                  class="h-full rounded-full bg-gradient-to-r from-neonGreen via-neonLime to-neonAmber transition-all duration-1000 ease-out shadow-neon-green"
+                  style="width: 56%;"
+                ></div>
+              </div>
+              <!-- Macros Breakdown -->
+              <div class="grid grid-cols-3 gap-3 mt-4 pt-4 border-t border-white/10 text-center">
+                <div>
+                  <span class="text-[11px] font-mono text-gray-400 block">PROTEÍNA DIARIA</span>
+                  <span id="macro-protein" class="font-mono text-base sm:text-lg font-bold text-neonLime">163g</span>
+                </div>
+                <div>
+                  <span class="text-[11px] font-mono text-gray-400 block">CARBOHIDRATOS</span>
+                  <span id="macro-carbs" class="font-mono text-base sm:text-lg font-bold text-neonGreen">340g</span>
+                </div>
+                <div>
+                  <span class="text-[11px] font-mono text-gray-400 block">GRASAS SALUDABLES</span>
+                  <span id="macro-fats" class="font-mono text-base sm:text-lg font-bold text-neonAmber">82g</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Personalized Recommendation Box (Nutricionista + Entrenador Personal de Yandel's GYM) -->
+            <div class="p-5 rounded-2xl bg-neonGreen/10 border border-neonGreen/40 space-y-2">
+              <div class="flex items-center gap-2 text-neonLime font-bold text-sm">
+                <i data-lucide="award" class="w-5 h-5 shrink-0"></i>
+                <span>RECOMENDACIÓN OFICIAL DE ESPECIALISTAS CAFYG:</span>
+              </div>
+              <p id="result-recommendation-text" class="text-gray-200 text-xs sm:text-sm leading-relaxed">
+                Para tu objetivo de <strong>Aumentar masa muscular</strong> con un IMC de <strong>25.0</strong>, te recomendamos acudir directamente con el <strong>Nutricionista y Entrenador Personal de Yandel's GYM</strong> para diseñar tu superávit limpio, entrenar 4 a 5 días en nuestra <strong>Zona de Peso Libre e Integrado</strong> y complementar al terminar con un batido en la <strong>Barra de Proteína</strong>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pre-filled WhatsApp Button to Schedule Assessment -->
+          <div class="mt-6 pt-5 border-t border-white/10">
+            <a
+              id="calc-whatsapp-cta"
+              href="https://wa.me/525582424449?text=Hola%20Yandel's%20GYM,%20calcul%C3%A9%20mi%20plan%20en%20su%20web:%20Peso%2074kg,%20Altura%20172cm,%20IMC%2025.0%20y%20mi%20objetivo%20es%20Aumentar%20masa%20muscular.%20Me%20gustar%C3%ADa%20agendar%20mi%20valoraci%C3%B3n%20con%20su%20Nutricionista%20y%20Entrenador%20Personal."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full py-4 px-6 rounded-2xl font-extrabold text-sm sm:text-base text-obsidian bg-gradient-to-r from-neonLime via-neonGreen to-neonAmber shadow-neon-green hover:scale-[1.02] transition-all flex items-center justify-center gap-3 text-center"
+            >
+              <i data-lucide="message-circle-check" class="w-5 h-5 shrink-0"></i>
+              <span>Enviar mis Datos por WhatsApp y Agendar Valoración</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       7. MURO DE LA COMUNIDAD Y RESEÑAS REALES DE GOOGLE MAPS (SOCIAL PROOF)
+          + ENLACES A INSTAGRAM (@yandelsgym) Y FACEBOOK
+       ===================================================================== -->
+  <section id="comunidad" class="py-24 lg:py-32 bg-slateDark/60 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neonAmber/15 border border-neonAmber/40 text-neonAmber text-xs font-mono uppercase tracking-widest mb-4">
+            ★★★★★ 5.0 CALIFICACIÓN EN IXTAPALUCA
+          </div>
+          <h2 class="font-display text-5xl sm:text-6xl uppercase text-white tracking-tight leading-none">
+            LO QUE DICE LA <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonGreen via-neonLime to-neonAmber">COMUNIDAD DE PRIMERA</span>
+          </h2>
+        </div>
+
+        <!-- Official Social Media Links -->
+        <div class="flex flex-wrap items-center gap-3">
+          <a
+            href="https://www.instagram.com/yandelsgym/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-obsidian border border-pink-500/40 hover:border-pink-400 text-white font-bold text-sm transition-all hover:scale-105"
+          >
+            <i data-lucide="instagram" class="w-5 h-5 text-pink-400"></i>
+            <span>@yandelsgym</span>
+          </a>
+          <a
+            href="https://www.facebook.com/yandelsgymcafyg/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-obsidian border border-blue-500/40 hover:border-blue-400 text-white font-bold text-sm transition-all hover:scale-105"
+          >
+            <i data-lucide="facebook" class="w-5 h-5 text-blue-400"></i>
+            <span>CAFYG / Yandel's Gym</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3 Official User Reviews Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Review 1 -->
+        <div class="card-3d-glow tilt-card rounded-3xl p-7 flex flex-col justify-between border border-white/10">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-1 text-neonAmber">
+                <i data-lucide="star" class="w-5 h-5 fill-neonAmber"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-neonAmber"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-neonAmber"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-neonAmber"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-neonAmber"></i>
+              </div>
+              <span class="text-xs font-mono text-neonLime px-2.5 py-1 rounded bg-neonGreen/10 border border-neonGreen/30">
+                Google Maps ★ 5.0
+              </span>
+            </div>
+            <p class="text-gray-200 text-base leading-relaxed italic">
+              "El gimnasio más completo de Santa Cruz Tlapacoya e Ixtapaluca. Tienen excelentes aparatos de peso libre e integrado, un ambiente súper motivador y el horario desde las 5:00 am es perfecto para entrenar antes del trabajo."
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-neonGreen to-neonLime text-obsidian font-display text-xl flex items-center justify-center font-bold">
+              M1
+            </div>
+            <div>
+              <div class="text-sm font-bold text-white">Miembro Verificado CAFYG</div>
+              <div class="text-xs text-gray-400">Entrenamiento Matutino • 5:00 AM</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="card-3d-glow tilt-card rounded-3xl p-7 flex flex-col justify-between border border-neonLime/30">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-1 text-neonAmber">
+                <i data-lucide="star" class="w-5 h-5 fill-neonAmber"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-neonAmber"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-neonAmber"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-neonAmber"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-neonAmber"></i>
+              </div>
+              <span class="text-xs font-mono text-neonAmber px-2.5 py-1 rounded bg-neonAmber/10 border border-neonAmber/30">
+                Usuario Wellhub ★ 5.0
+              </span>
+            </div>
+            <p class="text-gray-200 text-base leading-relaxed italic">
+              "Me encanta que no solo son pesas: tienen cafetería con malteadas de proteína deliciosas, entrenadores atentos, área infantil y además aceptan Wellhub / Gympass."
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-neonLime to-neonAmber text-obsidian font-display text-xl flex items-center justify-center font-bold">
+              M2
+            </div>
+            <div>
+              <div class="text-sm font-bold text-white">Miembro Verificado CAFYG</div>
+              <div class="text-xs text-gray-400">Barra de Proteína • Zona Infantil • Wellhub</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="card-3d-glow tilt-card rounded-3xl p-7 flex flex-col justify-between border border-white/10">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-1 text-neonAmber">
+                <i data-lucide="star" class="w-5 h-5 fill-neonAmber"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-neonAmber"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-neonAmber"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-neonAmber"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-neonAmber"></i>
+              </div>
+              <span class="text-xs font-mono text-emerald-400 px-2.5 py-1 rounded bg-emerald-400/10 border border-emerald-400/30">
+                Salud Integral ★ 5.0
+              </span>
+            </div>
+            <p class="text-gray-200 text-base leading-relaxed italic">
+              "Instalaciones amplias, limpias y con muy buena vibra. Tener nutricionista y fisioterapeuta en el mismo lugar hace toda la diferencia para ver resultados reales. ¡Un gimnasio de primera!"
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-neonGreen text-obsidian font-display text-xl flex items-center justify-center font-bold">
+              M3
+            </div>
+            <div>
+              <div class="text-sm font-bold text-white">Miembro Verificado CAFYG</div>
+              <div class="text-xs text-gray-400">Nutrición • Fisioterapia • Pesas</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       8. SECCIÓN DE HORARIOS (LUNES A DOMINGO), UBICACIÓN EN AV. FERROCARRIL,
+          SANTA CRUZ TLAPACOYA (CON MAPA INTERACTIVO IFRAME) Y RELOJ EN VIVO
+       ===================================================================== -->
+  <section id="horarios" class="py-24 lg:py-32 bg-obsidian border-t border-white/10 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neonGreen/15 border border-neonGreen/40 text-neonLime text-xs font-mono uppercase tracking-widest mb-4">
+          <i data-lucide="clock" class="w-4 h-4"></i> ABIERTO LOS 7 DÍAS DE LA SEMANA
+        </div>
+        <h2 class="font-display text-5xl sm:text-6xl lg:text-7xl uppercase text-white tracking-tight">
+          HORARIOS EN VIVO Y <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonGreen via-neonLime to-neonAmber">UBICACIÓN OFICIAL</span>
+        </h2>
+        <p class="mt-2 text-gray-400 text-base sm:text-lg">
+          Sin excusas y sin necesidad de reservar horario para entrenar. Consulta nuestro estado en tiempo real y visítanos en <strong class="text-white">Santa Cruz Tlapacoya, Ixtapaluca</strong>.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Left Column: Live JS Gym Status Clock + Official Schedule (6 cols) -->
+        <div class="lg:col-span-6 card-3d-glow rounded-3xl p-6 sm:p-8 lg:p-10 border border-neonGreen/30 flex flex-col justify-between">
+          
+          <div>
+            <!-- Live Status Dashboard Box -->
+            <div id="live-status-card" class="p-6 rounded-2xl bg-obsidian border-2 border-neonGreen/60 shadow-neon-green mb-8">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-mono uppercase text-gray-400">ESTADO EN TIEMPO REAL (IXTAPALUCA, EDOMEX)</span>
+                <span id="live-clock-full" class="font-mono text-sm font-bold text-neonAmber">
+                  --:--:--
+                </span>
+              </div>
+
+              <div id="live-status-headline" class="font-display text-3xl sm:text-4xl tracking-wide text-neonLime">
+                🟢 GIMNASIO ABIERTO AHORA - ¡Ven a entrenar!
+              </div>
+
+              <p id="live-status-subtext" class="text-xs sm:text-sm text-gray-300 mt-1">
+                Recepción abierta para inscripciones directas y check-in con Wellhub (Basic+).
+              </p>
+            </div>
+
+            <!-- Schedule Table (Lunes a Domingo) -->
+            <h3 class="font-display text-3xl text-white uppercase tracking-wide mb-4 flex items-center gap-2">
+              <i data-lucide="calendar" class="w-6 h-6 text-neonLime"></i>
+              Horarios Oficiales de Atención
+            </h3>
+
+            <div class="space-y-3 font-sans">
+              <!-- Lunes a Viernes -->
+              <div id="row-weekdays" class="p-4 rounded-2xl bg-slateDark/80 border border-white/10 flex items-center justify-between transition-all">
+                <div>
+                  <div class="font-bold text-white text-base flex items-center gap-2">
+                    <span>Lunes a Viernes</span>
+                    <span id="badge-weekdays" class="hidden text-[10px] font-mono px-2 py-0.5 rounded bg-neonLime text-obsidian font-extrabold">HOY</span>
+                  </div>
+                  <p class="text-xs text-gray-400">Jornada completa de 18 horas continuas</p>
+                </div>
+                <div class="font-mono text-sm sm:text-base font-extrabold text-neonLime">
+                  5:00 a.m. – 11:00 p.m.
+                </div>
+              </div>
+
+              <!-- Sábado -->
+              <div id="row-saturday" class="p-4 rounded-2xl bg-slateDark/80 border border-white/10 flex items-center justify-between transition-all">
+                <div>
+                  <div class="font-bold text-white text-base flex items-center gap-2">
+                    <span>Sábado</span>
+                    <span id="badge-saturday" class="hidden text-[10px] font-mono px-2 py-0.5 rounded bg-neonLime text-obsidian font-extrabold">HOY</span>
+                  </div>
+                  <p class="text-xs text-gray-400">Entrenamiento de fin de semana y barra proteica</p>
+                </div>
+                <div class="font-mono text-sm sm:text-base font-extrabold text-neonGreen">
+                  7:00 a.m. – 3:00 p.m.
+                </div>
+              </div>
+
+              <!-- Domingo -->
+              <div id="row-sunday" class="p-4 rounded-2xl bg-slateDark/80 border border-white/10 flex items-center justify-between transition-all">
+                <div>
+                  <div class="font-bold text-white text-base flex items-center gap-2">
+                    <span>Domingo</span>
+                    <span id="badge-sunday" class="hidden text-[10px] font-mono px-2 py-0.5 rounded bg-neonLime text-obsidian font-extrabold">HOY</span>
+                  </div>
+                  <p class="text-xs text-gray-400">Sesión dominical para no perder el ritmo</p>
+                </div>
+                <div class="font-mono text-sm sm:text-base font-extrabold text-neonAmber">
+                  9:00 a.m. – 2:00 p.m.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Official Address & Contact Summary -->
+          <div class="mt-8 pt-6 border-t border-white/10 space-y-3 text-sm">
+            <div class="flex items-start gap-3">
+              <i data-lucide="map-pin" class="w-5 h-5 text-neonLime shrink-0 mt-0.5"></i>
+              <div>
+                <strong class="text-white block">Dirección Exacta:</strong>
+                <span class="text-gray-300">Av. Ferrocarril (y Calle Álvaro Obregón), Col. Santa Cruz Tlapacoya, CP 56577, Ixtapaluca, Estado de México.</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <i data-lucide="phone-call" class="w-5 h-5 text-neonGreen shrink-0"></i>
+              <div>
+                <strong class="text-white">Teléfono y WhatsApp Oficial:</strong>
+                <a href="https://wa.me/525582424449?text=Hola%20Yandel's%20GYM,%20vi%20su%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informes%20sobre%20las%20mensualidades%20y%20promociones" target="_blank" rel="noopener noreferrer" class="font-mono text-neonLime font-bold hover:underline ml-1">
+                  55 8242 4449
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Interactive Google Maps Iframe + Facade Reference (6 cols) -->
+        <div class="lg:col-span-6 card-3d-glow rounded-3xl p-4 sm:p-6 border border-white/10 flex flex-col justify-between gap-4">
+          
+          <!-- Facade Real Mini Card -->
+          <div class="flex items-center gap-4 bg-obsidian/90 p-3.5 rounded-2xl border border-white/10">
+            <img
+              src="img/fachada-yandels-gym.png"
+              alt="Fachada de Yandel's GYM en Av. Ferrocarril"
+              class="w-20 h-20 rounded-xl object-cover shrink-0 border border-neonLime/40"
+            />
+            <div class="text-xs sm:text-sm">
+              <span class="text-[10px] font-mono text-neonLime uppercase font-bold block">UBíCANOS FÁCILMENTE EN LA ESQUINA</span>
+              <strong class="text-white font-bold block">Yandel’s GYM (CAFYG)</strong>
+              <p class="text-gray-400 text-xs mt-0.5">
+                Av. Ferrocarril y Calle Álvaro Obregón, Col. Santa Cruz Tlapacoya, CP 56577, Ixtapaluca.
+              </p>
+            </div>
+          </div>
+
+          <!-- Embedded Google Map Iframe -->
+          <div class="w-full flex-1 min-h-[340px] rounded-2xl overflow-hidden border border-white/15 relative">
+            <iframe
+              title="Ubicación de Yandel's GYM (CAFYG) en Av. Ferrocarril, Santa Cruz Tlapacoya, Ixtapaluca"
+              src="https://maps.google.com/maps?q=Av.+Ferrocarril+y+Calle+Alvaro+Obregon,+Santa+Cruz+Tlapacoya,+56577+Ixtapaluca,+Estado+de+Mexico&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="100%"
+              style="border:0; min-height: 340px; filter: invert(90%) hue-rotate(180deg) contrast(105%);"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+
+          <!-- Direct Action Buttons below Map -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Yandel's+GYM+Av.+Ferrocarril+Calle+Alvaro+Obregon+Santa+Cruz+Tlapacoya+Ixtapaluca"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="py-3.5 px-4 rounded-xl bg-slateDark hover:bg-white/10 border border-white/15 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all"
+            >
+              <i data-lucide="navigation" class="w-4 h-4 text-neonLime"></i>
+              <span>Abrir Cómo Llegar en Google Maps</span>
+            </a>
+            <a
+              href="https://wa.me/525582424449?text=Hola%20Yandel's%20GYM,%20vi%20su%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informes%20sobre%20las%20mensualidades%20y%20promociones"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="py-3.5 px-4 rounded-xl bg-neonGreen text-obsidian font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 hover:bg-neonLime transition-all"
+            >
+              <i data-lucide="message-circle" class="w-4 h-4 fill-obsidian"></i>
+              <span>Pedir Informes: 55 8242 4449</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       FOOTER OFICIAL YANDEL'S GYM (CAFYG)
+       ===================================================================== -->
+  <footer class="bg-obsidian border-t border-white/10 pt-16 pb-24 lg:pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- Col 1: Brand -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-neonGreen/20 border border-neonLime flex items-center justify-center">
+              <i data-lucide="dumbbell" class="w-5 h-5 text-neonLime"></i>
+            </div>
+            <span class="font-display text-3xl tracking-wider text-white">
+              YANDEL'S <span class="text-neonLime">GYM</span> <span class="text-xs font-mono text-neonAmber">CAFYG</span>
+            </span>
+          </div>
+          <p class="text-sm text-gray-400 italic">
+            "Porque somos un gimnasio de primera para gente de primera"
+          </p>
+          <p class="text-xs text-gray-500">
+            Centro de Acondicionamiento Físico y Gimnasio en Santa Cruz Tlapacoya, Ixtapaluca, Estado de México.
+          </p>
+        </div>
+
+        <!-- Col 2: Áreas Oficiales -->
+        <div>
+          <h4 class="font-display text-xl text-white uppercase tracking-wider mb-3">Nuestras 6 Áreas</h4>
+          <ul class="space-y-2 text-xs sm:text-sm text-gray-400">
+            <li>• Zona de Peso Libre y Peso Integrado</li>
+            <li>• Zona de Cardio y Workout</li>
+            <li>• Entrenadores Personales</li>
+            <li>• Nutricionista y Fisioterapeuta</li>
+            <li>• Cafetería y Barra de Proteína</li>
+            <li>• Spa y Zona Infantil</li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Horarios -->
+        <div>
+          <h4 class="font-display text-xl text-white uppercase tracking-wider mb-3">Horarios (7 Días)</h4>
+          <ul class="space-y-2 text-xs sm:text-sm text-gray-400 font-mono">
+            <li><strong class="text-white">Lun - Vie:</strong> 5:00 a.m. – 11:00 p.m.</li>
+            <li><strong class="text-white">Sábado:</strong> 7:00 a.m. – 3:00 p.m.</li>
+            <li><strong class="text-white">Domingo:</strong> 9:00 a.m. – 2:00 p.m.</li>
+            <li class="text-neonLime pt-1">✓ Aceptamos Wellhub (desde Basic+)</li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contacto Directo -->
+        <div class="space-y-3">
+          <h4 class="font-display text-xl text-white uppercase tracking-wider mb-3">Contacto Oficial</h4>
+          <p class="text-xs text-gray-400">
+            Av. Ferrocarril (y Calle Álvaro Obregón), Col. Santa Cruz Tlapacoya, CP 56577, Ixtapaluca, Edomex.
+          </p>
+          <p class="text-sm font-mono font-bold text-neonLime">
+            WhatsApp: 55 8242 4449
+          </p>
+          <div class="flex items-center gap-3 pt-1">
+            <a href="https://www.instagram.com/yandelsgym/" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-slateDark hover:bg-neonGreen/20 text-gray-300 hover:text-neonLime border border-white/10 transition-colors" aria-label="Instagram @yandelsgym">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+            <a href="https://www.facebook.com/yandelsgymcafyg/" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-slateDark hover:bg-neonGreen/20 text-gray-300 hover:text-neonLime border border-white/10 transition-colors" aria-label="Facebook CAFYG / Yandel's Gym">
+              <i data-lucide="facebook" class="w-4 h-4"></i>
+            </a>
+            <a href="https://wa.me/525582424449?text=Hola%20Yandel's%20GYM,%20vi%20su%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informes%20sobre%20las%20mensualidades%20y%20promociones" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-slateDark hover:bg-neonGreen/20 text-gray-300 hover:text-neonLime border border-white/10 transition-colors" aria-label="WhatsApp 55 8242 4449">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+        <p>© <span id="current-year">2026</span> Yandel’s GYM (CAFYG - Centro de Acondicionamiento Físico y Gimnasio). Todos los derechos reservados.</p>
+        <p class="font-mono text-gray-400">Santa Cruz Tlapacoya, Ixtapaluca • Estado de México</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       9. BOTÓN FLOTANTE DE WHATSAPP CON PULSO NEÓN
+       ===================================================================== -->
+  <a
+    href="https://wa.me/525582424449?text=Hola%20Yandel's%20GYM,%20vi%20su%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20pedir%20informes%20sobre%20las%20mensualidades%20y%20promociones"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar a Yandel's GYM por WhatsApp 55 8242 4449"
+    class="wa-floating-btn fixed bottom-6 right-6 z-50 flex items-center gap-3 px-5 py-3.5 rounded-full bg-gradient-to-r from-neonGreen via-neonLime to-neonGreen text-obsidian font-extrabold text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all group"
+  >
+    <svg class="w-6 h-6 fill-obsidian shrink-0" viewBox="0 0 24 24">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+    </svg>
+    <span class="hidden sm:inline">¡Inscríbete hoy! 55 8242 4449</span>
+  </a>
+
+  <!-- =====================================================================
+       LIGHTBOX MODAL PARA VER LAS FOTOS REALES DE YANDEL'S GYM EN GRANDE
+       ===================================================================== -->
+  <div id="lightbox-modal" onclick="closeLightbox()" class="fixed inset-0 z-[60] hidden bg-obsidian/95 backdrop-blur-xl items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full bg-slateDark rounded-3xl overflow-hidden border border-neonLime/40 shadow-2xl" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-white/10">
+        <p id="lightbox-caption" class="text-sm font-bold text-white"></p>
+        <button onclick="closeLightbox()" class="p-2 rounded-lg bg-white/10 hover:bg-neonLime hover:text-obsidian text-white transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="p-4 flex items-center justify-center bg-obsidian max-h-[78vh]">
+        <img id="lightbox-img" src="" alt="Vista ampliada Yandel's GYM" class="max-h-[72vh] w-auto object-contain rounded-xl"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       JAVASCRIPT COMPLETO (SIN ABREVIAR NINGUNA FUNCIÓN)
+       ===================================================================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+
+    // Hero Thumbnail Photo Switcher
+    function switchHeroPhoto(imgSrc, captionText, btnElement) {
+      const mainPhoto = document.getElementById('hero-main-photo');
+      const caption = document.getElementById('hero-photo-caption');
+      if (mainPhoto && caption) {
+        mainPhoto.style.opacity = '0.3';
+        setTimeout(() => {
+          mainPhoto.src = imgSrc;
+          caption.textContent = captionText;
+          mainPhoto.style.opacity = '1';
+        }, 160);
+      }
+      document.querySelectorAll('.hero-thumb').forEach(btn => {
+        btn.classList.remove('ring-2', 'ring-neonLime', 'opacity-100');
+        btn.classList.add('opacity-60');
+      });
+      if (btnElement) {
+        btnElement.classList.remove('opacity-60');
+        btnElement.classList.add('ring-2', 'ring-neonLime', 'opacity-100');
+      }
+    }
+
+    // Lightbox Functions for Real Gym Photos
+    function openLightbox(src, caption) {
+      const modal = document.getElementById('lightbox-modal');
+      const img = document.getElementById('lightbox-img');
+      const cap = document.getElementById('lightbox-caption');
+      if (modal && img && cap) {
+        img.src = src;
+        cap.textContent = caption;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    // =====================================================================
+    // 1. MAPA MUSCULAR / SELECTOR DE ENTRENAMIENTO INTERACTIVO (SVG + JS)
+    // =====================================================================
+    const trainingZonesData = {
+      superior: {
+        tag: 'ZONA: TREN SUPERIOR & FUERZA',
+        badge: '⚡ HIPERTROFIA Y FUERZA MUSCULAR',
+        specialist: '👨‍🏫 Acompañamiento: Entrenador Personal + Barra de Proteína',
+        title: 'TREN SUPERIOR & HIPERTROFIA DE FUERZA',
+        areaName: 'Lo lograrás en: Zona de Peso Libre, Peso Integrado y Racks de Mancuernas',
+        description: 'Desarrolla pecho, espalda en V, hombros y brazos con nuestra amplia variedad de máquinas biomecánicas Cybex, torres de poleas cruzadas, barras olímpicas y racks de mancuernas de hasta 125 lbs. Nuestros Entrenadores Personales te guían paso a paso para lograr máxima hipertrofia sin lesiones.',
+        image: 'img/racks-mancuernas-pesadas.jpg',
+        equipment: [
+          'Racks de mancuernas completas (hasta 125 lbs)',
+          'Torres de poleas cruzadas y máquinas biomecánicas integradas',
+          'Asesoría de Entrenador Personal en piso sin costo extra',
+          'Malteada post-entreno en nuestra Cafetería y Barra de Proteína'
+        ],
+        stats: { fuerza: 98, cardio: 82, salud: 90 },
+        whatsappText: 'Hola Yandel\'s GYM, me interesa entrenar Tren Superior y Fuerza en su Zona de Peso Libre e Integrado. ¿Me dan informes de mensualidades y promociones?',
+        btnLabel: 'Pedir Informes de Tren Superior por WhatsApp'
+      },
+      inferior: {
+        tag: 'ZONA: TREN INFERIOR & POTENCIA',
+        badge: '🔥 POTENCIA DE PIERNA Y GLÚTEO',
+        specialist: '👨‍🏫 Acompañamiento: Entrenador Personal + Nutricionista',
+        title: 'TREN INFERIOR, GLÚTEO & POTENCIA EXPLOSIVA',
+        areaName: 'Lo lograrás en: Zona de Peso Libre, Prensas Olympic y Racks de Sentadilla',
+        description: 'Construye piernas fuertes, cuádriceps definidos, isquiotibiales y glúteos con nuestras prensas inclinadas Olympic, hack squats, extensiones biomecánicas y peso libre. Combínalo con un plan de alimentación de nuestro Nutricionista para maximizar tu desarrollo muscular.',
+        image: 'img/pierna-prensa-olympic.jpg',
+        equipment: [
+          'Prensas de pierna Olympic, Hack Squat y máquinas de glúteo',
+          'Racks olímpicos y discos para sentadilla libre y peso muerto',
+          'Programación de cargas progresivas con Entrenador Personal',
+          'Recuperación muscular con Fisioterapeuta y batido proteico'
+        ],
+        stats: { fuerza: 96, cardio: 88, salud: 92 },
+        whatsappText: 'Hola Yandel\'s GYM, quiero informes para entrenar Tren Inferior, Pierna y Glúteo en sus instalaciones de Santa Cruz Tlapacoya.',
+        btnLabel: 'Pedir Informes de Tren Inferior por WhatsApp'
+      },
+      cardio: {
+        tag: 'ZONA: CARDIO, BOXEO & WORKOUT',
+        badge: '🥊 QUEMA DE GRASA Y RESISTENCIA',
+        specialist: '🥗 Acompañamiento: Entrenador Funcional + Nutricionista',
+        title: 'CARDIO INTENSIVO, WORKOUT & QUEMA DE GRASA',
+        areaName: 'Lo lograrás en: Zona de Cardio, Área Funcional Workout y Zumba / Box',
+        description: 'Acelera tu metabolismo al máximo, define tu abdomen y mejora tu capacidad pulmonar en nuestra Zona de Cardio con caminadoras, elípticas, escaladoras y salón de Workout / Zumba. Nuestro Nutricionista ajustará tu déficit calórico para oxidar grasa manteniendo tu tono muscular.',
+        image: 'img/poleas-peso-integrado.jpg',
+        equipment: [
+          'Caminadoras, elípticas y escaladoras de uso rudo',
+          'Área funcional para Workout, acondicionamiento, Zumba y Box',
+          'Plan de déficit calórico con nuestro Nutricionista en el gym',
+          'Hidratación energética en Cafetería y acceso para usuarios Wellhub'
+        ],
+        stats: { fuerza: 84, cardio: 100, salud: 95 },
+        whatsappText: 'Hola Yandel\'s GYM, mi objetivo es bajar porcentaje de grasa en su Zona de Cardio y Workout + Nutricionista. ¿Me brindan informes?',
+        btnLabel: 'Pedir Informes de Cardio & Quema de Grasa'
+      },
+      recuperacion: {
+        tag: 'ZONA: RECUPERACIÓN, NUTRICIÓN & SPA',
+        badge: '💆‍♂️ SALUD INTEGRAL Y REHABILITACIÓN',
+        specialist: '🩺 Acompañamiento: Fisioterapeuta + Nutricionista + Spa',
+        title: 'NUTRICIÓN CLÍNICA, FISIOTERAPIA, SPA & ZONA INFANTIL',
+        areaName: 'Lo lograrás en: Consultorio de Nutrición/Fisioterapia, Spa y Zona Infantil',
+        description: 'En Yandel\'s GYM cuidamos tu cuerpo de forma 100% integral. Contamos con Fisioterapeuta para descarga muscular y prevención/rehabilitación de lesiones, Nutricionista para transformar tus hábitos, área de Spa para relajarte y Zona Infantil para que entrenes con total tranquilidad.',
+        image: 'img/mancuernas-neon-pulso.jpg',
+        equipment: [
+          'Valoración y sesiones de descarga muscular con Fisioterapeuta',
+          'Planes de alimentación personalizados con Nutricionista',
+          'Área de Spa para relajación post-entrenamiento',
+          'Zona Infantil segura para que entrenes mientras cuidamos a tus hijos'
+        ],
+        stats: { fuerza: 86, cardio: 85, salud: 100 },
+        whatsappText: 'Hola Yandel\'s GYM, me interesa información sobre sus servicios integrales de Nutricionista, Fisioterapeuta, Spa y Zona Infantil.',
+        btnLabel: 'Pedir Informes de Nutrición y Fisioterapia'
+      }
+    };
+
+    function selectTrainingZone(zoneKey) {
+      const data = trainingZonesData[zoneKey];
+      if (!data) return;
+
+      // Update SVG Active State
+      document.querySelectorAll('.muscle-zone').forEach(el => {
+        el.classList.remove('active-zone');
+      });
+      const activeSvgGroup = document.getElementById('svg-zone-' + zoneKey);
+      if (activeSvgGroup) {
+        activeSvgGroup.classList.add('active-zone');
+      }
+
+      // Update Top Pills State
+      document.querySelectorAll('.zone-pill').forEach(btn => {
+        if (btn.getAttribute('data-zone-btn') === zoneKey) {
+          btn.className = 'zone-pill active-pill flex items-center justify-between p-4 rounded-2xl bg-slateDark border-2 border-neonLime text-left transition-all shadow-neon-green';
+        } else {
+          btn.className = 'zone-pill flex items-center justify-between p-4 rounded-2xl bg-slateDark/70 border border-white/10 hover:border-neonGreen/50 text-left transition-all';
+        }
+      });
+
+      // Update Card Text & Image
+      document.getElementById('svg-active-tag').textContent = data.tag;
+      document.getElementById('zone-badge').textContent = data.badge;
+      document.getElementById('zone-specialist-pill').textContent = data.specialist;
+      document.getElementById('zone-title').textContent = data.title;
+      document.getElementById('zone-AreaName').textContent = data.areaName;
+      document.getElementById('zone-description').textContent = data.description;
+      document.getElementById('zone-image').src = data.image;
+
+      // Update Equipment List
+      const listEl = document.getElementById('zone-equipment-list');
+      listEl.innerHTML = data.equipment
+        .map(item => `<li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-neonLime shrink-0"></span> <span>${item}</span></li>`)
+        .join('');
+
+      // Update Telemetry Progress Bars
+      document.getElementById('stat-fuerza-val').textContent = data.stats.fuerza + '%';
+      document.getElementById('stat-fuerza-bar').style.width = data.stats.fuerza + '%';
+      document.getElementById('stat-cardio-val').textContent = data.stats.cardio + '%';
+      document.getElementById('stat-cardio-bar').style.width = data.stats.cardio + '%';
+      document.getElementById('stat-salud-val').textContent = data.stats.salud + '%';
+      document.getElementById('stat-salud-bar').style.width = data.stats.salud + '%';
+
+      // Update WhatsApp Direct Link
+      const encodedMsg = encodeURIComponent(data.whatsappText);
+      const waLink = document.getElementById('zone-whatsapp-link');
+      waLink.href = `https://wa.me/525582424449?text=${encodedMsg}`;
+      document.getElementById('zone-whatsapp-btn-text').textContent = data.btnLabel;
+    }
+
+    // =====================================================================
+    // 2. CALCULADORA INTERACTIVA EN VIVO DE IMC Y CALORÍAS DIARIAS
+    // =====================================================================
+    function syncSlider(sourceId, targetId) {
+      const source = document.getElementById(sourceId);
+      const target = document.getElementById(targetId);
+      if (source && target) {
+        target.value = source.value;
+        calculateFitnessPlan();
+      }
+    }
+
+    function calculateFitnessPlan() {
+      const weight = parseFloat(document.getElementById('calc-weight').value) || 74;
+      const heightCm = parseFloat(document.getElementById('calc-height').value) || 172;
+      const age = parseFloat(document.getElementById('calc-age').value) || 28;
+      const activityFactor = parseFloat(document.getElementById('calc-activity').value) || 1.55;
+      const goal = document.getElementById('calc-goal').value;
+
+      // 1. Calculate BMI (IMC = peso / (altura_m ^ 2))
+      const heightM = heightCm / 100;
+      const bmi = weight / (heightM * heightM);
+      const bmiFormatted = bmi.toFixed(1);
+
+      // 2. Determine BMI Category & Progress Percentage
+      let bmiCategory = 'PESO ÓPTIMO ATLÉTICO';
+      let bmiSubtext = 'Excelente base física para potenciar fuerza y estética.';
+      let badgeClasses = 'px-3.5 py-1.5 rounded-full text-xs font-mono font-extrabold bg-neonGreen/20 text-neonLime border border-neonLime/50';
+
+      if (bmi < 18.5) {
+        bmiCategory = 'BAJO PESO • FASE DE VOLUMEN';
+        bmiSubtext = 'Ideal para iniciar superávit calórico e hipertrofia guiada.';
+        badgeClasses = 'px-3.5 py-1.5 rounded-full text-xs font-mono font-extrabold bg-neonAmber/20 text-neonAmber border border-neonAmber/50';
+      } else if (bmi >= 18.5 && bmi < 25) {
+        bmiCategory = 'PESO ÓPTIMO ATLÉTICO';
+        bmiSubtext = 'Rango saludable listo para ganar masa magra o definir.';
+      } else if (bmi >= 25 && bmi < 30) {
+        bmiCategory = 'RECOMPOSICIÓN / POTENCIA';
+        bmiSubtext = 'Excelente oportunidad para oxidar grasa y consolidar músculo.';
+        badgeClasses = 'px-3.5 py-1.5 rounded-full text-xs font-mono font-extrabold bg-neonAmber/20 text-neonAmber border border-neonAmber/50';
+      } else {
+        bmiCategory = 'TRANSFORMACIÓN METABÓLICA';
+        bmiSubtext = 'Priorizaremos quema de grasa segura y cuidado articular con Fisioterapeuta.';
+        badgeClasses = 'px-3.5 py-1.5 rounded-full text-xs font-mono font-extrabold bg-rose-500/20 text-rose-300 border border-rose-400/50';
+      }
+
+      // Map BMI (14 to 38) to 8% - 96% bar width
+      const progressPercent = Math.min(96, Math.max(8, ((bmi - 14) / (38 - 14)) * 100));
+
+      // 3. Calculate TDEE & Goal Calories (Mifflin-St Jeor base)
+      const bmr = (10 * weight) + (6.25 * heightCm) - (5 * age) + 5;
+      const tdee = bmr * activityFactor;
+      let targetCalories = tdee;
+      let proteinPerKg = 2.0;
+      let areaSuggestion = '';
+
+      if (goal === 'Bajar porcentaje de grasa') {
+        targetCalories = Math.round(tdee - 420);
+        proteinPerKg = 2.2;
+        areaSuggestion = 'entrenar en nuestra <strong>Zona de Cardio y Workout + Peso Integrado</strong>, llevar tu plan de déficit con el <strong>Nutricionista de Yandel\'s GYM</strong> y guiarte con un <strong>Entrenador Personal</strong>';
+      } else if (goal === 'Aumentar masa muscular') {
+        targetCalories = Math.round(tdee + 360);
+        proteinPerKg = 2.2;
+        areaSuggestion = 'entrenar pesado en nuestra <strong>Zona de Peso Libre e Integrado</strong> con seguimiento de nuestro <strong>Entrenador Personal y Nutricionista</strong>, y recuperar tus fibras al terminar en la <strong>Cafetería y Barra de Proteína</strong>';
+      } else {
+        targetCalories = Math.round(tdee + 100);
+        proteinPerKg = 2.0;
+        areaSuggestion = 'combinar nuestra <strong>Zona de Peso Libre, Cardio y Workout</strong> bajo la supervisión del <strong>Entrenador Personal, Nutricionista y Fisioterapeuta de Yandel\'s GYM</strong>';
+      }
+
+      // Calculate Macros
+      const proteinGrams = Math.round(weight * proteinPerKg);
+      const fatGrams = Math.round((targetCalories * 0.25) / 9);
+      const carbGrams = Math.max(80, Math.round((targetCalories - (proteinGrams * 4) - (fatGrams * 9)) / 4));
+
+      // Update UI Elements
+      document.getElementById('result-bmi-number').textContent = bmiFormatted;
+      document.getElementById('result-bmi-subtext').textContent = bmiSubtext;
+      const badgeEl = document.getElementById('bmi-category-badge');
+      badgeEl.className = badgeClasses;
+      badgeEl.textContent = bmiCategory;
+
+      document.getElementById('result-calories-number').textContent = targetCalories.toLocaleString('es-MX');
+      document.getElementById('result-goal-tag').textContent = 'Objetivo: ' + goal;
+
+      const barEl = document.getElementById('bmi-progress-bar');
+      barEl.style.width = progressPercent.toFixed(1) + '%';
+
+      document.getElementById('macro-protein').textContent = proteinGrams + 'g';
+      document.getElementById('macro-carbs').textContent = carbGrams + 'g';
+      document.getElementById('macro-fats').textContent = fatGrams + 'g';
+
+      const recEl = document.getElementById('result-recommendation-text');
+      recEl.innerHTML = `Con tu peso de <strong>${weight} kg</strong>, altura de <strong>${heightCm} cm</strong> (IMC <strong>${bmiFormatted}</strong>) y meta de <strong>${goal}</strong>, tu requerimiento estimado es de <strong>${targetCalories.toLocaleString('es-MX')} kcal/día</strong>. Te recomendamos acudir con el <strong>Nutricionista y Entrenador Personal de Yandel's GYM</strong> para personalizar tu plan y ${areaSuggestion}.`;
+
+      // Pre-fill WhatsApp CTA Link with user's exact metrics
+      const waMessage = `Hola Yandel's GYM, calculé mi plan en su página web: Peso ${weight}kg, Altura ${heightCm}cm, IMC ${bmiFormatted} (${targetCalories} kcal/día) y mi objetivo es "${goal}". Me gustaría agendar mi valoración con su Nutricionista y Entrenador Personal y pedir informes de mensualidades.`;
+      document.getElementById('calc-whatsapp-cta').href = `https://wa.me/525582424449?text=${encodeURIComponent(waMessage)}`;
+    }
+
+    // Listen to changes on Age, Activity, and Goal to update live
+    ['calc-age', 'calc-activity', 'calc-goal'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('change', calculateFitnessPlan);
+    });
+
+    // =====================================================================
+    // 4. TARJETAS DE SERVICIOS CON EFECTO GLOW NEÓN Y 3D HOVER
+    // =====================================================================
+    document.querySelectorAll('.card-3d-glow').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+
+        if (card.classList.contains('tilt-card') && window.innerWidth >= 1024) {
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -3.5;
+          const rotateY = ((x - centerX) / centerX) * 3.5;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+        }
+      });
+
+      card.addEventListener('mouseleave', () => {
+        if (card.classList.contains('tilt-card')) {
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+        }
+      });
+    });
+
+    // =====================================================================
+    // 5. RELOJ DE ESTADO DEL GIMNASIO EN TIEMPO REAL (JS LIVE STATUS)
+    //    Horarios Oficiales:
+    //    - Lunes a Viernes: 5:00 a.m. – 11:00 p.m. (5:00 - 23:00)
+    //    - Sábado: 7:00 a.m. – 3:00 p.m. (7:00 - 15:00)
+    //    - Domingo: 9:00 a.m. – 2:00 p.m. (9:00 - 14:00)
+    // =====================================================================
+    function updateGymLiveStatus() {
+      // Get current time in Mexico City / Ixtapaluca (America/Mexico_City)
+      const now = new Date();
+      const mxOptions = {
+        timeZone: 'America/Mexico_City',
+        hour12: false,
+        weekday: 'short',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      };
+
+      // Extract accurate Mexico City components
+      const mxDateStr = now.toLocaleString('en-US', { timeZone: 'America/Mexico_City' });
+      const mxDate = new Date(mxDateStr);
+      const dayOfWeek = mxDate.getDay(); // 0 = Sunday, 1 = Monday, ... 6 = Saturday
+      const hours = mxDate.getHours();
+      const minutes = mxDate.getMinutes();
+      const currentDecimalHour = hours + (minutes / 60);
+
+      // Formatted 12h time string for UI display
+      const timeFormatted = mxDate.toLocaleTimeString('es-MX', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      });
+
+      // Highlight current day row in Schedule Section
+      const rowWeekdays = document.getElementById('row-weekdays');
+      const rowSaturday = document.getElementById('row-saturday');
+      const rowSunday = document.getElementById('row-sunday');
+      const badgeWeekdays = document.getElementById('badge-weekdays');
+      const badgeSaturday = document.getElementById('badge-saturday');
+      const badgeSunday = document.getElementById('badge-sunday');
+
+      [rowWeekdays, rowSaturday, rowSunday].forEach(r => {
+        if (r) r.className = 'p-4 rounded-2xl bg-slateDark/80 border border-white/10 flex items-center justify-between transition-all';
+      });
+      [badgeWeekdays, badgeSaturday, badgeSunday].forEach(b => {
+        if (b) b.classList.add('hidden');
+      });
+
+      let openHour = 5;
+      let closeHour = 23;
+      let closeTimeStr = '11:00 PM';
+
+      if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+        // Lunes a Viernes: 5:00 AM - 11:00 PM
+        openHour = 5;
+        closeHour = 23;
+        closeTimeStr = '11:00 PM';
+        if (rowWeekdays) rowWeekdays.className = 'p-4 rounded-2xl bg-neonGreen/15 border-2 border-neonLime flex items-center justify-between shadow-neon-green transition-all';
+        if (badgeWeekdays) badgeWeekdays.classList.remove('hidden');
+      } else if (dayOfWeek === 6) {
+        // Sábado: 7:00 AM - 3:00 PM
+        openHour = 7;
+        closeHour = 15;
+        closeTimeStr = '3:00 PM';
+        if (rowSaturday) rowSaturday.className = 'p-4 rounded-2xl bg-neonGreen/15 border-2 border-neonLime flex items-center justify-between shadow-neon-green transition-all';
+        if (badgeSaturday) badgeSaturday.classList.remove('hidden');
+      } else {
+        // Domingo: 9:00 AM - 2:00 PM
+        openHour = 9;
+        closeHour = 14;
+        closeTimeStr = '2:00 PM';
+        if (rowSunday) rowSunday.className = 'p-4 rounded-2xl bg-neonGreen/15 border-2 border-neonLime flex items-center justify-between shadow-neon-green transition-all';
+        if (badgeSunday) badgeSunday.classList.remove('hidden');
+      }
+
+      const isOpen = currentDecimalHour >= openHour && currentDecimalHour < closeHour;
+
+      // Determine next opening label when closed
+      let nextOpenLabel = '5:00 AM';
+      if (currentDecimalHour < openHour) {
+        nextOpenLabel = openHour === 5 ? '5:00 AM' : (openHour === 7 ? '7:00 AM' : '9:00 AM');
+      } else {
+        // Closed for the night; check tomorrow's opening hour
+        const tomorrowDay = (dayOfWeek + 1) % 7;
+        if (tomorrowDay >= 1 && tomorrowDay <= 5) nextOpenLabel = '5:00 AM';
+        else if (tomorrowDay === 6) nextOpenLabel = '7:00 AM (Sábado)';
+        else nextOpenLabel = '9:00 AM (Domingo)';
+      }
+
+      const statusTextOpen = '🟢 GIMNASIO ABIERTO AHORA - ¡Ven a entrenar!';
+      const statusTextClosed = `🔴 CERRADO AHORA - Abre a las ${nextOpenLabel}`;
+
+      // Update Navbar, Hero, Mobile Menu & Schedule Live Clock
+      const heroClock = document.getElementById('hero-clock-time');
+      const liveClockFull = document.getElementById('live-clock-full');
+      if (heroClock) heroClock.textContent = `Ixtapaluca: ${timeFormatted}`;
+      if (liveClockFull) liveClockFull.textContent = `Hora local: ${timeFormatted}`;
+
+      const navStatusText = document.getElementById('nav-status-text');
+      const navStatusDot = document.getElementById('nav-status-dot');
+      const mobileStatusText = document.getElementById('mobile-status-text');
+      const heroStatusLabel = document.getElementById('hero-status-label');
+      const heroStatusIndicator = document.getElementById('hero-status-indicator');
+      const liveStatusHeadline = document.getElementById('live-status-headline');
+      const liveStatusSubtext = document.getElementById('live-status-subtext');
+      const liveStatusCard = document.getElementById('live-status-card');
+
+      if (isOpen) {
+        if (navStatusText) navStatusText.textContent = `🟢 ABIERTO AHORA • Cierra ${closeTimeStr}`;
+        if (navStatusDot) navStatusDot.className = 'w-2.5 h-2.5 rounded-full bg-neonLime animate-pulse';
+        if (mobileStatusText) {
+          mobileStatusText.textContent = statusTextOpen;
+          mobileStatusText.className = 'text-neonLime font-bold';
+        }
+        if (heroStatusLabel) heroStatusLabel.textContent = statusTextOpen;
+        if (heroStatusIndicator) {
+          heroStatusIndicator.innerHTML = `
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neonLime opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-neonLime"></span>
+          `;
+        }
+        if (liveStatusHeadline) {
+          liveStatusHeadline.textContent = statusTextOpen;
+          liveStatusHeadline.className = 'font-display text-3xl sm:text-4xl tracking-wide text-neonLime';
+        }
+        if (liveStatusSubtext) {
+          liveStatusSubtext.textContent = `Hoy estamos abiertos hasta las ${closeTimeStr}. ¡Entrena sin reserva previa o haz check-in con Wellhub!`;
+        }
+        if (liveStatusCard) {
+          liveStatusCard.className = 'p-6 rounded-2xl bg-obsidian border-2 border-neonGreen/60 shadow-neon-green mb-8';
+        }
+      } else {
+        if (navStatusText) navStatusText.textContent = statusTextClosed;
+        if (navStatusDot) navStatusDot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse';
+        if (mobileStatusText) {
+          mobileStatusText.textContent = statusTextClosed;
+          mobileStatusText.className = 'text-rose-400 font-bold';
+        }
+        if (heroStatusLabel) heroStatusLabel.textContent = statusTextClosed;
+        if (heroStatusIndicator) {
+          heroStatusIndicator.innerHTML = `
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-500 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-rose-500"></span>
+          `;
+        }
+        if (liveStatusHeadline) {
+          liveStatusHeadline.textContent = statusTextClosed;
+          liveStatusHeadline.className = 'font-display text-3xl sm:text-4xl tracking-wide text-rose-400';
+        }
+        if (liveStatusSubtext) {
+          liveStatusSubtext.textContent = 'Déjanos un mensaje por WhatsApp al 55 8242 4449 y te responderemos a primera hora.';
+        }
+        if (liveStatusCard) {
+          liveStatusCard.className = 'p-6 rounded-2xl bg-obsidian border-2 border-rose-500/50 mb-8';
+        }
+      }
+    }
+
+    // Run initial calculations & start 1-second live status clock
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    calculateFitnessPlan();
+    updateGymLiveStatus();
+    setInterval(updateGymLiveStatus, 1000);
+  </script>
+</body>
+</html>
